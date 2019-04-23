@@ -17,4 +17,4 @@ Due to the large amount of students in the classroom, professors need a better w
 To take attendance, we may use google cloud API to do facial recognision and read GPS locataion. We may also use google classroom API to create classes, distribute assignments, send feedback, and see everything in one place.
 
 ### Storyboard 
-Format: ![Alt Text](./images/1_1)
+![alt text](./images/1.1)

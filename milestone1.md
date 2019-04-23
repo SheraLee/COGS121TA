@@ -33,13 +33,13 @@ To take attendance, we may use google cloud API to do facial recognision and rea
 
 ### 1st Prototype
 ### 2rd Prototype
-![Prototype](Sign in page.png)
-![Prototype](Main page.png)
+![Prototype](Signinpage.png)
+![Prototype](Mainpage.png)
 ![Prototype](Attendance.png)
-![Prototype](Export to file.png)
-![Prototype](question page.png)
-![Prototype](Explanation of answers.png)
+![Prototype](Exporttofile.png)
+![Prototype](questionpage.png)
+![Prototype](Explanationofanswers.png)
 ![Prototype](Materials.png)
-![Prototype](Add new material.png)
+![Prototype](Addnewmaterial.png)
 
 

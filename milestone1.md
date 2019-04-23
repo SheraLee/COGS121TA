@@ -1,7 +1,7 @@
 # Milestone 1
 Team Name: 
 
-Member's Name: Xirui Li
+Member's Name: Xirui Li, Yanyi Wang
 
 ## Proposal 
 ### Target user
@@ -33,3 +33,13 @@ To take attendance, we may use google cloud API to do facial recognision and rea
 
 ### 1st Prototype
 ### 2rd Prototype
+![Prototype](Sign in page.png)
+![Prototype](Main page.png)
+![Prototype](Attendance.png)
+![Prototype](Export to file.png)
+![Prototype](question page.png)
+![Prototype](Explanation of answers.png)
+![Prototype](Materials.png)
+![Prototype](Add new material.png)
+
+

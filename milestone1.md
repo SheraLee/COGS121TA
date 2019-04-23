@@ -12,16 +12,16 @@ Our target users are professors teaching in larger classrooms. Since the three o
 
 Due to the large amount of students in the classroom, we believe that professors need a better way to keep students' attention, record their attendance, and student feedback. In order to achieve this, we will build a web app that can increase interactions between professors and students during class and help professors get more timely feedback from students to improve the class experience.  
 
-In details: 
-1) Instead of using iclickers or signi up sheet, we will use our app to do both facial recognition and GPS tracking to make sure the attendace will be taken properly. 
+In detail: 
+1) Instead of using iclickers or signi up sheet, we will use our app to do both facial recognition and GPS tracking to make sure the attendance will be taken properly. 
 2) To give professors more timely feedbacks, we will allow students to comment on the slide during the lecture, so the professor can adjust their pace based on student feedback.
 3) Choosing A,B,C is one of the quick and easy way to interacte with class, but the answer alone does not show understanding. Giving students the ability to explain their answer is great, but unfortunately professors do not have time to read through all the resposes due class to size. In our app, we want to extract the most common key word in students responses. With this method, the professor can get a grasp on how well the students absorbed the material.
-4) After each lectures, we may require students to give more feedback on the lecture to help the professor adjust their teaching style. 
+4) After each lecture, we may require students to give more feedback on the lecture to help the professor adjust their teaching style. 
 
 
 ### Possible API 
  
-To take attendance, we may use google cloud API to do facial recognision and read GPS locataion. We may also use google classroom API to create classes, distribute assignments, send feedback, and see everything in one place.
+To take attendance, we may use google cloud API to do facial recognition and read GPS location. We may also use google classroom API to create classes, distribute assignments, send feedback, and help organize everything in one place.
 
 ### Alternate Project Ideas
 When coming up with our original idea, we were concerned that our idea was too similar to piazza and IClicker. We thought of these ideas just in case our original idea does not go through.

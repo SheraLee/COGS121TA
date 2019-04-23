@@ -18,8 +18,8 @@ To take attendance, we may use google cloud API to do facial recognision and rea
 
 ### 1St Storyboard 
 ![Storyboard1](1_1.jpg)
-![Storyboard1](1_2.jpg)
+![Storyboard1](1_2.png)
 
 ### 2rd Storyboard 
-![Storyboard2](2_1.jpg)
-![Storyboard2](2_2.jpg)
+![Storyboard2](2_1.png)
+![Storyboard2](2_2.png)

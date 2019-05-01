@@ -1,4 +1,6 @@
 # Milestone 2
+Member's Name: Xirui Li, Yanyi Wang, Vincent Alday
+
 We kept our original idea which is to create a web app that can increase interactions between professors and students during class and help professors get more timely feedback from students to improve the class experience. Adding to this idea, we are going to create a class evaluation page(or statistic page) for professors to view their class feedback and evaluations from students in previous class. We are creating this because sometimes professor might not going to look at their evaluations on other websites such as rate my professor, but it is really helpful for them to get more feedback from students in order to redesign class structure or make any improvement. 
 
 

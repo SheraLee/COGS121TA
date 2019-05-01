@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Landing Page</title>
+  <title>class_evaluation Page</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -10,34 +10,36 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   <script src="jquery-3.3.1.min.js"></script>
   <script type="text/javascript">
-    // jQuery convention for running when the document has been fully loaded:
-    $(document).ready(() => {
-  $('#readButton').click(() => {
+
+$(document).ready(() => {
+    $('#readButton').click(() => {
     const requestURL = 'users/' + $('#nameBox').val();
     console.log('making ajax request to:', requestURL);
-    // From: http://learn.jquery.com/ajax/jquery-ajax-methods/
-    // Using the core $.ajax() method since it's the most flexible.
-    // ($.get() and $.getJSON() are nicer convenience functions)
+
     $.ajax({
       // all URLs are relative to http://localhost:3000/
       url: requestURL,
       type: 'GET',
       dataType : 'json', // this URL returns data in JSON format
       success: (data) => {
-        console.log('You received some data!', data);
-        if (data.job && data.pet) {
-          $('#status').html('Successfully fetched data at URL: ' + requestURL);
-          $('#jobDiv').html('My job is ' + data.job);
-          $('#petImage').attr('src', data.pet).attr('width', '300px');
-        } else {
-          $('#status').html('Error: could not find user at URL: ' + requestURL);
-          // clear the display
-          $('#jobDiv').html('');
-          $('#petImage').attr('src', '').attr('width', '0px');
-        }
-      },
+      console.log('You received some data!', data);
+      console.log('You received some data!', data);
+      console.log('The grade of the student is ' + data.Grade);
+      console.log('The attendance of the student is' + data.attendance);
+      if (data.Grade && data.attendance) {
+        $('#gradeDiv').html('The grade of of '+ $('#nameBox').val() + ' is '+ data.Grade);
+        $('#attendanceDiv').html('The attendance of '+ $('#nameBox').val() + 'is ' + data.attendance);
+      } 
+      else {
+        // clear the display
+        console.log('enter else');
+        $('#gradeDiv').html('');
+        $('#attendanceDiv').html('');
+      }
+    }
     });
   });
+
   $('#allUsersButton').click(() => {
     $.ajax({
       url: 'users',
@@ -46,6 +48,9 @@
       success: (data) => {
         console.log('You received some data!', data);
         $('#status').html('All users: ' + data);
+        const nameKeys = Objest.keys(data) 
+        console.log('The keys are: ', data);
+
       },
     });
   });
@@ -77,7 +82,6 @@
         Name: <input id="nameBox" type="text" size="20"/>
         <button id="readButton">Get a Student's Performance</button>
         <button id="allUsersButton">Get all Student's Performance</button>
-
+        <div id="gradeDiv"></div>
+        <div id="attendanceDiv"></div>
 </body>           
-
-</html>

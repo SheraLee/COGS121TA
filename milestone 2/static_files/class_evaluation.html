@@ -76,10 +76,9 @@ $(document).ready(() => {
 
   });
    */
-    
-
-
-
+ 
+ 
+   
   /*-----------------------*/
   $('#allUsersButton').click( ()=> {
     console.log("Hello");
@@ -122,7 +121,7 @@ $(document).ready(() => {
       success: (data) => {
         console.log('You received some data!', data);
         $('#status').html('All users: ' + data);
-        const nameKeys = Objest.keys(data) 
+        const nameKeys = Objest.keys(data) ;
         console.log('The keys are: ', data);
 
       },
@@ -176,8 +175,6 @@ $(document).ready(() => {
                     Course: <input id="course_box" type="text" size="20"/>
                     <button id="prof_data">Get Course Data</button>
                     <button id="resetButton"> DELETE ALL CAPE DATA</button>
-                  
-                  
                   
                   
                     <div id="result">

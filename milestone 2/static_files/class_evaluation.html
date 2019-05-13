@@ -37,6 +37,9 @@
 
 $(document).ready(() => {
   const database = firebase.database();
+  database.ref('students/Vincent').set({grade:'A', attendance:'85'});
+  database.ref('students/Yanyi').set({grade:'A', attendance:'90'});
+  database.ref('students/Shera').set({grade:'C', attendance:'40'});
 
   $("#prof_data").click( () =>{
     const course = $("#course_box").val();
@@ -76,6 +79,7 @@ $(document).ready(() => {
 
   });
    */
+<<<<<<< HEAD
  
  
    
@@ -125,13 +129,28 @@ $(document).ready(() => {
         console.log('The keys are: ', data);
 
       },
+=======
+  
+   $('#allUsersButton').click( ()=> {
+    database.ref("students/").once('value', (snapshot) => {
+      $('#gradeDiv').html('<h3>Students</h3>'+ "<table id='data' class='table table-responsive table-striped'><tr> <th>Student</th> <th>Grade</th> <th>Attendance</th></tr></table>")
+      snapshot.forEach(function(data){
+        
+        $('#data').append("<tr> <td>"+data.key+"</td> <td>"+data.val().grade+"</td> <td>"+data.val().attendance+"</td> </tr>")
+      });
+      
     });
   });
-  // define a generic Ajax error handler:
-  // http://api.jquery.com/ajaxerror/
-  $(document).ajaxError(() => {
-    $('#status').html('Error: unknown ajaxError!');
+
+  $('#readButton').click( ()=> {
+    const stu_name = 'students/' + $('#nameBox').val();
+    database.ref(stu_name).once('value', (snapshot) => {
+      $('#gradeDiv').html('<h3>Students</h3>'+ "<table id='data' class='table table-responsive table-striped'><tr> <th>Student</th> <th>Grade</th> <th>Attendance</th></tr></table>")
+      $('#data').append("<tr> <td>"+snapshot.key+"</td> <td>"+snapshot.val().grade+"</td> <td>"+snapshot.val().attendance+"</td> </tr>")
+>>>>>>> 71fcac3d46c9f7298f7afbbfa7382aef596223f6
+    });
   });
+
 });
     </script>
 </head>
@@ -172,7 +191,7 @@ $(document).ready(() => {
               <div class="row"  >
           
                   <div class="col-md-6">
-                    Course: <input id="course_box" type="text" size="20"/>
+                    Course: <input placeholder="Ex.COGS121" id="course_box" type="text" size="20"/>
                     <button id="prof_data">Get Course Data</button>
                     <button id="resetButton"> DELETE ALL CAPE DATA</button>
                   

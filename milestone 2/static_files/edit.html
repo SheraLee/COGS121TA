@@ -1,15 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Landing Page</title>
+  <title>class_evaluation Page</title>
+
+ <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/6.0.1/firebase.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#config-web-app -->
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyC0afXrWzKDmxKFgnp4ltUxc7bG5p3gt8M",
+    authDomain: "cogs121-cb16b.firebaseapp.com",
+    databaseURL: "https://cogs121-cb16b.firebaseio.com",
+    projectId: "cogs121-cb16b",
+    storageBucket: "cogs121-cb16b.appspot.com",
+    messagingSenderId: "727112788947",
+    appId: "1:727112788947:web:06d5844aa7620e07"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+</script>
+
+  
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale= 1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-</head>
+
+  <script src="jquery-3.3.1.min.js"></script>
+
+
+  <script type="text/javascript">
+
+    $(document).ready(() => {
+    const database = firebase.database()
+
+    /*$('#saveButton').click(() => {
+    database.ref('edit/Question_1').set({Question_number: '1', file: 'cat.jpg', question:'what does this mean?', answer1: 'hello', answer2: 'goodbye' });
+    database.ref('edit/Question_2').set({Question_number: '1', file: 'cat.jpg', question:'what does this mean?', answer1: 'hello', answer2: 'goodbye' });
+    database.ref('edit/Question_3').set({Question_number: '1', file: 'cat.jpg', question:'what does this mean?', answer1: 'hello', answer2: 'goodbye' });
+    console.log('Saving');
+  })*/
+
+
+
+    $('#resetButton').click(() => {
+    console.log('Resetting the database');
+    /* remember the fake JavaScript object database from PetsApp v1?
+    const fakeDatabase = {
+      'Philip': {job: 'professor', pet: 'cat.jpg'},
+      'John': {job: 'student',   pet: 'dog.jpg'},
+      'Carol': {job: 'engineer',  pet: 'bear.jpg'}
+    };
+    */
+    database.ref('edit/').remove(); // delete the entire collection
+    // writes data to the database:
+    
+  });
+
+
+    $('#saveButton').click(() => {
+    const questionNum = $('#exampleFormControlInput1').val();
+    database.ref('edit/' + questionNum).set({
+      Question_number: questionNum,
+      //file: $('#inputGroupFile02').val(), 
+      question:$('#exampleFormControlTextarea1').val(), 
+      answer1: $('#answer ').val(),
+      answer2: $('#answer2 ').val()
+    });
+  });
+
+
+
+
+
+  })
+
+
+
+
+  </script>
+  </head>
+
+  
+
+
 <body style="background:#faf4ef">
+
       
     <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
         <ul class="navbar-nav">
@@ -27,37 +109,16 @@
 <form>
 
 
+
   <div class="form w-50" style= "margin:20px"
-    <label for="exampleFormControlInput1">Question number</label>
-    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+    <label for="exampleFormControlInput1" >Question number</label>
+    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Question_1">
   </div>
 
 
-  <div class="row" style= "margin-top:20px">
-    <div class="col-auto">
-     <div class="input-group mb-3" style= "margin-left:20px">
-  <div class="custom-file">
-    <input type="file" class="custom-file-input" id="inputGroupFile02">
-    <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
-  </div>
-  <div class="input-group-append">
-    <span class="input-group-text" id="">Upload</span>
-  </div>
-</div>
-    </div>
-    <div class="col-auto">
-      <div class="input-group mb-3" style= "margin-right:20px">
-  <div class="custom-file">
-    <input type="file" class="custom-file-input" id="inputGroupFile02">
-    <label class="custom-file-label" for="inputGroupFile02">Choose image</label>
-  </div>
-  <div class="input-group-append">
-    <span class="input-group-text" id="">Upload</span>
-  </div>
-</div>
-    </div>
-  </div>
-</form>
+  
+
+
 
  <div class="form-group w-50" style= "margin:20px">
     <label for="exampleFormControlTextarea1">Write a question here</label>
@@ -73,7 +134,7 @@
   <label class="form-check-label" for="inlineCheckbox1">A</label>
 </div>
 <div class="input-group mb-3 w-20">
-  <input type="text" class="form-control" placeholder="Enter an anwser" aria-label="Recipient's username" aria-describedby="basic-addon2">
+  <input type="text" id = 'answer'class="form-control" placeholder="Enter an anwser" aria-label="Recipient's username" aria-describedby="basic-addon2">
   <div class="input-group-append">
     <button class="btn btn-outline-secondary" type="button">OK</button>
   </div>
@@ -82,11 +143,11 @@
   </div>
   <div class="col">
        <div class="form-check form-check-inline">
-  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option1">
   <label class="form-check-label" for="inlineCheckbox1">B</label>
 </div>
 <div class="input-group mb-3 w-20">
-  <input type="text" class="form-control" placeholder="Enter an anwser" aria-label="Recipient's username" aria-describedby="basic-addon2">
+  <input type="text" id = 'answer2'class="form-control" placeholder="Enter an anwser" aria-label="Recipient's username" aria-describedby="basic-addon2">
   <div class="input-group-append">
     <button class="btn btn-outline-secondary" type="button">OK</button>
   </div>
@@ -95,7 +156,7 @@
   <div class="w-100"></div>
   <div class="col">
        <div class="form-check form-check-inline">
-  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+  <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option1">
   <label class="form-check-label" for="inlineCheckbox1">C</label>
 </div>
 <div class="input-group mb-3 w-20">
@@ -107,7 +168,7 @@
   </div>
   <div class="col">
        <div class="form-check form-check-inline">
-  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+  <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="option1">
   <label class="form-check-label" for="inlineCheckbox1">D</label>
 </div>
 <div class="input-group mb-3 w-20">
@@ -120,10 +181,22 @@
 </div>
 <button type="button" class="btn btn-primary">Add anwsers</button>
 
-<button type="button" class="btn btn-primary btn-sm">Post</button>
-<button type="button" class="btn btn-secondary btn-sm">Save the question</button>
+
+<button id = 'saveButton'type="button" class="btn btn-secondary btn-sm">Save the question</button>
 
 
-   <a href="class_page.html" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Back</a>
 
+
+
+<button id="resetButton">Delete all questions</button>
+<a href="class_page.html" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Back</a>
+
+ 
+
+
+
+<hr/>
+<div id="status"></div>
+</body>
+</html>
 

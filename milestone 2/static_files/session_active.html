@@ -1,14 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Landing Page</title>
+  <title>class_evaluation Page</title>
+
+ <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/6.0.1/firebase.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#config-web-app -->
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyC0afXrWzKDmxKFgnp4ltUxc7bG5p3gt8M",
+    authDomain: "cogs121-cb16b.firebaseapp.com",
+    databaseURL: "https://cogs121-cb16b.firebaseio.com",
+    projectId: "cogs121-cb16b",
+    storageBucket: "cogs121-cb16b.appspot.com",
+    messagingSenderId: "727112788947",
+    appId: "1:727112788947:web:06d5844aa7620e07"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+</script>
+
+  
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-</head>
+
+  <script src="jquery-3.3.1.min.js"></script>
+
+
+  <script type="text/javascript">
+
+    $(document).ready(() => {
+    const database = firebase.database()
+
+    /*$('#saveButton').click(() => {
+    database.ref('edit/Question_1').set({Question_number: '1', file: 'cat.jpg', question:'what does this mean?', answer1: 'hello', answer2: 'goodbye' });
+    database.ref('edit/Question_2').set({Question_number: '1', file: 'cat.jpg', question:'what does this mean?', answer1: 'hello', answer2: 'goodbye' });
+    database.ref('edit/Question_3').set({Question_number: '1', file: 'cat.jpg', question:'what does this mean?', answer1: 'hello', answer2: 'goodbye' });
+    console.log('Saving');
+  })*/
+$('#readButton').click(() => {
+  const num= $('#Question_number').val()
+    const key = 'edit/' + num;
+
+    /*const questionNum = $('#exampleFormControlInput1').val();
+    database.ref('edit/' + questionNum).set({
+      Question_number: questionNum,
+      //file: $('#inputGroupFile02').val(), 
+      question:$('#exampleFormControlTextarea1').val(), 
+      answer1: $('#answer ').val(),
+      answer2: $('#answer2 ').val()*/
+    // 'once' reads the value once from the database
+   database.ref(key).once('value', (snapshot) => {
+      const data = snapshot.val();
+      console.log('You received some data!', data);
+      if (!data) {
+        // clear the display
+        $('#answer').html('');
+        $('#answer2').attr('src', '').attr('width', '0px');
+        $('#exampleFormControlTextarea1').html('Error: could not find user: ' + key);
+        return;
+      }
+      if (data.Question_number&& data.question && data.answer1 && data.answer2) {
+        $('#question').html(data.Question_number);
+        $('#content').html(  data.question);
+
+        $('#A').html('A: ' + data.answer1);
+        $('#B').html('B: ' + data.answer2);
+        //$('#exampleFormControlTextarea1').html('Question: ' + data.question);
+
+      } else {
+        // clear the display
+        $('#question').html('');
+        $('#C').attr('src', '').attr('width', '0px');
+      }
+    });
+      });
+
+
+
+
+  })
+
+
+
+
+  </script>
+  </head>
+
 <body style="background:#faf4ef">
       
     <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
@@ -27,20 +113,21 @@
 
 
 <div class="container">
-
+<input id="Question_number" type="text" size="20" style="margin-top:20px" />
+        <button id="readButton">Get the question</button>
   <div class="row">
     <div class="col">
       <div class="card w-100" style="margin-top:50px">
         <H1>COGS121</H1>
   <img class="card-img-top" src="slide.png" >
   <div class="card-body">
-    <h5 class="card-title">Question 1</h5>
-    <p class="card-text">What is the anwser of this question?</p>
+    <h5 class="card-title" id = 'question'>Question 1</h5>
+    <p class="card-text" id = 'content'>What is the anwser of this question?</p>
   </div>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item">A. xxx</li>
-    <li class="list-group-item">B.yyy</li>
-    <li class="list-group-item">C.zzz</li>
+    <li class="list-group-item" id = 'A'>A.</li>
+    <li class="list-group-item" id = 'B'>B.</li>
+    <li class="list-group-item"id = 'C'>C.</li>
   </ul>
   <div class="card-body">
     <a href="#" class="card-link text-right">next</a>

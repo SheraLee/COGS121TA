@@ -5,13 +5,87 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+ 
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/6.0.2/firebase.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#config-web-app -->
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyC0afXrWzKDmxKFgnp4ltUxc7bG5p3gt8M",
+    authDomain: "cogs121-cb16b.firebaseapp.com",
+    databaseURL: "https://cogs121-cb16b.firebaseio.com",
+    projectId: "cogs121-cb16b",
+    storageBucket: "cogs121-cb16b.appspot.com",
+    messagingSenderId: "727112788947",
+    appId: "1:727112788947:web:06d5844aa7620e07"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+</script>
+
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-  <script src="jquery-3.3.1.min.js"></script>
+  <script src="jquery-3.3.1.min.js"></script>  
   <script type="text/javascript">
 
 $(document).ready(() => {
+  const database = firebase.database();
+
+  $("#prof_data").click( () =>{
+    const course = $("#course_box").val();
+    
+    database.ref("cape_data").orderByChild('subject_course').equalTo(course).on('value', (snapshot) => {
+      console.log(snapshot.val());
+      $('#result').html('<h3>'+ course +'</h3><br><div id="avg_stdy"></div>' + "<table id='data' class='table table-responsive table-striped'><tr> <th>Term</th> <th>Instructor</th> <th>Hours Study/Week</th> <th>Average GPA</th> </tr></table>")
+      let avg_count = 0;
+      let avg_study = 0;
+      let avg_gpa = 0;
+
+      snapshot.forEach(function(data){
+        console.log(data.key);
+        avg_count++;
+        avg_study += parseInt(data.val().study_hours_per_week);
+        
+        if(data.val().avg_gpa_received != null){
+          avg_gpa += parseInt(data.val().avg_gpa_received);
+        }
+
+        $('#data').append("<tr> <td>"+data.val().term+"</td> <td>"+data.val().instructor+"</td> <td>"+data.val().study_hours_per_week+"</td> <td>"+data.val().avg_gpa_received+"</td> </tr>")
+
+      });
+      $('#avg_stdy').append('<h5> Average Study Hour/Week :' + (avg_study/avg_count).toFixed(2) +' Hrs</h5>');
+      $('#avg_stdy').append('<h5> Average GPA :' + (avg_gpa/avg_count).toFixed(2) +'</h5>' + "(Undefined GPA counted as 0)");
+
+
+      //const data = snapshot.data;
+      //$('#result').html("job:" + data.job);
+    });
+  });
+
+ /*$('#resetButton').click(() => {
+    console.log('Resetting the database');
+
+    database.ref('cape_data').remove(); // delete the entire collection
+
+  });
+   */
+    
+
+
+
+  /*-----------------------*/
+  $('#allUsersButton').click( ()=> {
+    console.log("Hello");
+  });
+
+
     $('#readButton').click(() => {
     const requestURL = 'users/' + $('#nameBox').val();
     console.log('making ajax request to:', requestURL);
@@ -65,7 +139,7 @@ $(document).ready(() => {
 
 <body style="background:#faf4ef">
       
-        <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+        <nav class="navbar navbar-expand-sm bg-primary navbar-dark" style="margin-bottom:10px">
                 <ul class="navbar-nav">
                     <li class="nav-item active">
                         <a class="nav-link" href="landing.html">Home</a>
@@ -79,9 +153,58 @@ $(document).ready(() => {
                 </ul>
         </nav>
 
-        Name: <input id="nameBox" type="text" size="20"/>
-        <button id="readButton">Get a Student's Performance</button>
-        <button id="allUsersButton">Get all Student's Performance</button>
-        <div id="gradeDiv"></div>
-        <div id="attendanceDiv"></div>
+
+    
+
+          <ul class="nav nav-pills" style="margin-bottom:10px">
+              <li class="nav-item">
+                <a class="nav-link active" data-toggle="pill" href="#class_stats">Class Info</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="pill" href="#student">Student Info</a>
+              </li>
+            </ul>
+
+
+        <div class="tab-content">
+        
+        
+          <div id="class_stats" class="tab-pane active">
+              <div class="row"  >
+          
+                  <div class="col-md-6">
+                    Course: <input id="course_box" type="text" size="20"/>
+                    <button id="prof_data">Get Course Data</button>
+                    <button id="resetButton"> DELETE ALL CAPE DATA</button>
+                  
+                  
+                  
+                  
+                    <div id="result">
+                    
+                    </div>
+                  </div>
+        
+                  <div class="col-md-6" style="margin-top:80px">
+                      <h3>Your Data</h3>
+                      <h5>Current Class: COGS 121</h5>
+                      <h5>AVG Hours Spent: 10.5 Hrs</h5>
+                      <h5>Common Phrases: </h5>
+                  </div>
+        
+        
+                </div>     
+          </div>
+      
+       
+
+        <div id="student" class="tab-pane fade in">
+            Name: <input id="nameBox" type="text" size="20"/>
+            <button id="readButton">Get a Student's Performance</button>
+            <button id="allUsersButton">Get all Student's Performance</button>
+            <div id="gradeDiv"></div>
+            <div id="attendanceDiv"></div> 
+        </div>
+
+      </div>
 </body>           

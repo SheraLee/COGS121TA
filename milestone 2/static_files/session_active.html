@@ -70,10 +70,12 @@ $('#readButton').click(() => {
       }
       if (data.Question_number&& data.question && data.answer1 && data.answer2) {
         $('#question').html(data.Question_number);
-        $('#content').html(  data.question);
+        $('#content').html(data.question);
+        $('#file').attr('src', data.file).attr('width', '300px')
 
         $('#A').html('A: ' + data.answer1);
         $('#B').html('B: ' + data.answer2);
+        $('#C').html('C: ' + data.answer3);
         //$('#exampleFormControlTextarea1').html('Question: ' + data.question);
 
       } else {
@@ -119,7 +121,7 @@ $('#readButton').click(() => {
     <div class="col">
       <div class="card w-100" style="margin-top:50px">
         <H1>COGS121</H1>
-  <img class="card-img-top" src="slide.png" >
+  <img class="card-img-top" src="#"  id = 'file'>
   <div class="card-body">
     <h5 class="card-title" id = 'question'>Question 1</h5>
     <p class="card-text" id = 'content'>What is the anwser of this question?</p>

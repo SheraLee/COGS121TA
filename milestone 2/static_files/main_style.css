@@ -1,0 +1,32 @@
+.button_style{
+    background-color:#6f9ceb;
+    color:white;
+    font-weight:bold;
+    font-size:24;
+    text-align:center;
+}
+
+/* Used for 'Find Classes', 'My Classes', and the Course name at the top of the page */
+.top_links{
+    color: #306bac;
+    font-size:25;
+}
+
+/*Used for section titles on the main page(ex. Lecture Materials) */
+.main_header{
+    font-weight:bold;
+    color:#95989A;
+}
+
+/* Settings for side navBar */
+.side_nav{
+    background-color:#306bac;
+    color:white;
+}
+
+/* Used to display a list of content (ex. Lecture Material/Comments/Etc ) */
+.content_card{
+    color:#95989A;
+    box-shadow: 4px 4px 4px grey;
+}
+

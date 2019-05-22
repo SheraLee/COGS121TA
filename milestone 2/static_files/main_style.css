@@ -6,11 +6,53 @@
     text-align:center;
 }
 
+.nav_button{
+    background-color:#6f9ceb;
+    color:white;
+    font-weight:bold;
+    font-size:24;
+    text-align:center;
+    float:left;
+    margin-right:20px;
+
+}
+
 /* Used for 'Find Classes', 'My Classes', and the Course name at the top of the page */
 .top_links{
     color: #306bac;
     font-size:25;
+    display: block;
+    border-bottom: .5px solid grey;
 }
+
+.top_links h2{
+    float:left;
+}
+
+.top_links ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.top_links li {
+    float: right;
+  }
+  
+.top_links li a {
+    display: block;
+    text-align: center;
+    padding: 5px 16px;
+    text-decoration: none;
+    font-size: 25px;
+  }
+  
+  /* Change the link color to #111 (black) on hover */
+.top_links li a:hover {
+    background-color: #111;
+  }
+
 
 /*Used for section titles on the main page(ex. Lecture Materials) */
 .main_header{
@@ -18,15 +60,69 @@
     color:#95989A;
 }
 
-/* Settings for side navBar */
-.side_nav{
-    background-color:#306bac;
-    color:white;
-}
-
 /* Used to display a list of content (ex. Lecture Material/Comments/Etc ) */
 .content_card{
     color:#95989A;
     box-shadow: 4px 4px 4px grey;
 }
+
+    /* The side navigation menu */
+    .sidenav {
+        height: 100%; /* 100% Full-height */
+        width: 0; /* 0 width - change this with JavaScript */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Stay on top */
+        top: 0; /* Stay at the top */
+        left: 0;
+        background-color: #306bac; /* Black*/
+        overflow-x: hidden; /* Disable horizontal scroll */
+        box-shadow: 3px 3px 3px grey;
+        transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+      }
+      
+      /* The navigation menu links */
+      .sidenav a {
+        padding: 8px 8px 8px 32px;
+        padding-top: 40px;
+        text-decoration: none;
+        font-size: 25px;
+        color: white;
+        display: block;
+        transition: 0.3s;
+      }
+      
+      .sidenav h2 {
+        padding: 8px 5px 8px 32px;
+        text-decoration: none;
+        font-size: 25px;
+        color: white;
+        display: block;
+        transition: 0.3s;
+      }
+      
+      /* When you mouse over the navigation links, change their color */
+      .sidenav a:hover {
+        color: #f1f1f1;
+      }
+      
+      /* Position and style the close button (top right corner) */
+      .sidenav .closebtn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+      }
+      
+      /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+      #main {
+        transition: margin-left .5s;
+        padding: 20px;
+      }
+      
+      /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+      @media screen and (max-height: 450px) {
+        .sidenav {padding-top: 15px;}
+        .sidenav a {font-size: 18px;}
+      }
 

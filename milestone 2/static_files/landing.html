@@ -8,30 +8,27 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="main_style.css">
+
 </head>
-<body style="background:#faf4ef">
+<body>
       
-    <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
-        <ul class="navbar-nav">
-            <li class="nav-item active">
-                <a class="nav-link" href="landing.html">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="my_classes.html">My Classes</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="login.html">Login</a>
-            </li>
-        </ul>
-    </nav>
+        <div class="top_links">
+                <ul>
+                    <h2>[Site Name]</h2>
+                    <li><a href="search_results.html">Find Classes</a></li>
+                    <li><a href="my_classes.html">My Classes</a></li>
+                </ul>
+            </div>
 
 
-<div class="container" style="text-align:center">
-  <h1>Interact (Name In progress)</h1>
-</div>
 
-<div class="container" style="text-align:center;margin-top:10%">
-  <p>Search For your School</p>
+
+<div class="container-fluid jumbotron" style="text-align:center;background-color:#306BAC;border-radius: 0 !important;padding:100px">
+  <h1 style="text-align:center;color:white">Expand Your Knowledge</h1>
+  <p style="color:white">Search For your School</p>
   <input style="width:500px" type="text" name="LastName" placeholder="Enter School" >
   <a href="search_results.html" class="btn btn-primary">Search</a>
 </div>
@@ -40,7 +37,7 @@
   <h1 style="text-align:center">What can you do with Interact?(Name In Progress)</h1>
   <div style="margin-top:50px" class="row">
       <div class="col col-md-4">
-          <div class="card" style="width:400px">
+          <div class="card content_card" style="width:400px">
               <div class="card-body">
                   <h4 class="card-title">Interactive sessions</h4>
                   <p class="card-text"> Create and share questions for students to participate in</p>
@@ -48,7 +45,7 @@
           </div>
      </div>
      <div class="col col-md-4">
-          <div class="card" style="width:400px">
+          <div class="card content_card" style="width:400px">
               <div class="card-body">
                   <h4 class="card-title">Share Class Material</h4>
                   <p class="card-text"> Easy way to share class material and get feedback from the students</p>
@@ -57,7 +54,7 @@
       </div>
 
       <div class="col col-md-4">
-        <div class="card" style="width:400px">
+        <div class="card content_card" style="width:400px">
             <div class="card-body">
                 <h4 class="card-title">Keep Track of Class Information</h4>
                 <p class="card-text">Monitor class data. Hours spent studying, Teacher ranking, etc</p>

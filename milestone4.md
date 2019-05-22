@@ -4,14 +4,14 @@ For Milestone 4, we decided to add a collapsible sidebar in order to make it eas
 
 In terms of functionality, we added the ability to comment on a specific class material and added a basic question maker for class sessions.
 
-####Functionality 1:Search for a previous class evaluation statistics 
+### Functionality 1:Search for a previous class evaluation statistics 
 Users can search for previous class evaluation statistics by clicking class Statistics, enter any class number. User can also get the student's performance in class by clicking studetn info, and enter any student name.
 
-####Functionality 2: Edit session and create in class active session
+### Functionality 2: Edit session and create in class active session
 Users are able to add class materials, attendance questions on the site. By going to edit session, users can add questions with image, write up, answer. Users can also go to class material session to add slides/pdf. 
 In active session, users can search for any questions number and get the question displayed on the cite.
 
-####Functionality 3: In class comment, Q&A, attendence statistics.
+### Functionality 3: In class comment, Q&A, attendence statistics.
 Users are able to put real time comment, answers for questions, solve questions and post them on cite for everyone to see.
 
 ### Class Material Page (comments)

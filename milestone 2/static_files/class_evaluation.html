@@ -28,7 +28,7 @@
   firebase.initializeApp(firebaseConfig);
 </script>
 
-
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
@@ -51,7 +51,7 @@ $(document).ready(() => {
     
     database.ref("cape_data").orderByChild('subject_course').equalTo(course).on('value', (snapshot) => {
       console.log(snapshot.val());
-      $('#result').html('<h3>'+ course +'</h3><br><div id="avg_stdy"></div>' + "<table id='data' class='table table-responsive table-striped'><tr> <th>Term</th> <th>Instructor</th> <th>Hours Study/Week</th> <th>Average GPA</th> </tr></table>")
+      $('#result').html('<h3 style="color:blue">'+ course +'</h3><br><div id="avg_stdy"></div>' + "<table id='data' class='table table-responsive table-striped'><tr> <th>Term</th> <th>Instructor</th> <th>Hours Study/Week</th> <th>Average GPA</th> </tr></table>")
       let avg_count = 0;
       let avg_study = 0;
       let avg_gpa = 0;
@@ -68,8 +68,8 @@ $(document).ready(() => {
         $('#data').append("<tr> <td>"+data.val().term+"</td> <td>"+data.val().instructor+"</td> <td>"+data.val().study_hours_per_week+"</td> <td>"+data.val().avg_gpa_received+"</td> </tr>")
 
       });
-      $('#avg_stdy').append('<h5> Average Study Hour/Week :' + (avg_study/avg_count).toFixed(2) +' Hrs</h5>');
-      $('#avg_stdy').append('<h5> Average GPA :' + (avg_gpa/avg_count).toFixed(2) +'</h5>' + "(Undefined GPA counted as 0)");
+      $('#avg_stdy').append('<h5 style="color:green"> Average Study Hour/Week :' + (avg_study/avg_count).toFixed(2) +' Hrs</h5>');
+      $('#avg_stdy').append('<h5 style="color:orange"> Average GPA :' + (avg_gpa/avg_count).toFixed(2) +'</h5>' + "(Undefined GPA counted as 0)");
 
 
       //const data = snapshot.data;
@@ -105,7 +105,63 @@ $(document).ready(() => {
     });
   });
 
+
+
+
+
+// Load google charts
+google.charts.load('current', {'packages':['corechart']});
+google.charts.setOnLoadCallback(drawChart);
+
+// Draw the chart and set the chart values
+function drawChart() {
+  var count =0;
+  /*
+  database.ref("side_comments").on("value", function(snapshot) {
+    
+    snapshot.forEach(function(data){
+        console.log("sKey =" + data.key);
+        count++;  
+      });
+   
 });
+
+*/
+
+  
+  var data = google.visualization.arrayToDataTable([
+  ['Material', 'Questions Asked'],
+  ['Lecture 1', 5],
+  ['Session 1', 3]
+]);
+
+  // Optional; add a title and set the width and height of the chart
+  var options = {'title':'Number of Comments per Content', 'width':550, 'height':400};
+
+  // Display the chart inside the <div> element with id="piechart"
+  var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+  chart.draw(data, options);
+}
+
+
+
+
+
+
+
+
+
+
+
+});
+
+
+
+
+
+
+
+
     </script>
 </head>
 
@@ -171,10 +227,14 @@ $(document).ready(() => {
 
                   <div class="card content_card col-md-6">
                       <h3>Your Data</h3>
-                      <h5>Current Class: COGS 121</h5>
-                      <h5>AVG Hours Spent: 10.5 Hrs</h5>
-                      <h5>Current Class GPA: 3.0</h5>
+                      <h5 style="color:blue">Current Class: COGS 121</h5>
+                      <h5 style="color:green">AVG Hours Spent: 10.5 Hrs</h5>
+                      <h5 style="color:orange">Current Class GPA: 3.0</h5>
                       <h5>Common Phrases: Easy Going, Helpful, Kind </h5>
+
+                      <h5>Misc Data:</h5>
+            
+                      <div id="piechart"></div>
                   </div> 
           
       

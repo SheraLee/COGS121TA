@@ -33,6 +33,10 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
   <script src="jquery-3.3.1.min.js"></script>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="main_style.css">
+  <script src="nav_bar.js"></script>
+
 
 
   <script type="text/javascript">
@@ -97,21 +101,35 @@ $('#readButton').click(() => {
   </script>
   </head>
 
-<body style="background:#faf4ef">
+
+  <body style="background-color:#fff;">
+  <div id="mySidenav" class="sidenav open">
+        <div style="display:block">
+            <h2>[Name of site]</h2>
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()" style="margin:0px;padding:0px">&times;</a>
+        </div>
+        <a href="class_material.html">Class Material</a>
+        <a href="session_active.html">Active Session</a>
+        <a href="edit.html">Edit Sessions</a>
+        <a href="class_evaluation.html">Class Statistics</a>
+      </div>
+
+
       
-    <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
-        <ul class="navbar-nav">
-            <li class="nav-item active">
-                <a class="nav-link" href="landing.html">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="my_classes.html">My Classes</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="login.html">Login</a>
-            </li>
+  <div id="main">
+
+    <div class="top_links">
+        <ul>
+             <!-- Use any element to open the sidenav -->
+       <button id ="nav_btn" type="button" class="btn btn-default btn-sm nav_button" onclick="openNav()" style="float:left">
+            <span class="material-icons">&#xe8ee;</span>
+       </button>
+            <h2>COGS 121 SP19 (UCSD)</h2>
+            <li><a href="search_results.html">Find Classes</a></li>
+            <li><a href="my_classes.html">My Classes</a></li>
         </ul>
-    </nav>
+    </div>
+
 
 
 <div class="container">
@@ -119,7 +137,7 @@ $('#readButton').click(() => {
         <button id="readButton">Get the question</button>
   <div class="row">
     <div class="col">
-      <div class="card w-100" style="margin-top:50px">
+      <div class="card content_card card w-100" style="margin-top:50px">
         <H1>COGS121</H1>
   <img class="card-img-top" src="#"  id = 'file'>
   <div class="card-body">
@@ -131,14 +149,14 @@ $('#readButton').click(() => {
     <li class="list-group-item" id = 'B'>B.</li>
     <li class="list-group-item"id = 'C'>C.</li>
   </ul>
-  <div class="card-body">
+  <div class="card content_card card-body">
     <a href="#" class="card-link text-right">next</a>
   </div>
 </div>
 
     </div>
     <div class="col">
-      <div class="card w-100" style="margin-top:100px">
+      <div class="card content_card card w-100" style="margin-top:50px">
   <figure class="figure">
   <img src="question_stats.jpg" class="figure-img img-fluid rounded" alt="A figure visualize class performance statistics.">
   <figcaption class="figure-caption" style="margin-left:20px">Accuracy of class.</figcaption>
@@ -146,11 +164,11 @@ $('#readButton').click(() => {
   <div class="card-body">
     <h5 class="card-title">Statisics</h5>
     <p class="card-text">There are 44% people got the right anwser</p>
-    <a href="details.html" class="btn btn-primary">Details</a>
+    <a href="details.html" class="btn btn-primary button_style">Details</a>
   </div>
 </div>
 
-    <a href="class_page.html" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Back</a>
+    <a href="class_page.html" class="btn btn-primary button_style" style="margin-top:10px" role="button" aria-pressed="true">Back</a>
     </div>
     
   </div>

@@ -115,42 +115,27 @@ google.charts.setOnLoadCallback(drawChart);
 
 // Draw the chart and set the chart values
 function drawChart() {
-  var count =0;
-  /*
-  database.ref("side_comments").on("value", function(snapshot) {
-    
-    snapshot.forEach(function(data){
-        console.log("sKey =" + data.key);
-        count++;  
-      });
-   
-});
-
-*/
-
   
-  var data = google.visualization.arrayToDataTable([
+database.ref("side_comments").on("value", function(snapshot) {  
+    var a = snapshot.numChildren(); // 1 ("name")
+
+    var data = google.visualization.arrayToDataTable([
   ['Material', 'Questions Asked'],
-  ['Lecture 1', 5],
+  ['Lecture 1', a],
   ['Session 1', 3]
 ]);
 
   // Optional; add a title and set the width and height of the chart
-  var options = {'title':'Number of Comments per Content', 'width':550, 'height':400};
+  var options = {'title':'Number of Comments per Content', width:'450', height:'550'};
 
   // Display the chart inside the <div> element with id="piechart"
-  var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+  var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
   chart.draw(data, options);
+
+
+});
+ 
 }
-
-
-
-
-
-
-
-
-
 
 
 });
@@ -176,22 +161,27 @@ function drawChart() {
         <a href="session_active.html">Active Session</a>
         <a href="edit.html">Edit Sessions</a>
         <a href="class_evaluation.html">Class Statistics</a>
+        <br>
+       
+        
+        <!--<div style="bottom: 0;position: absolute;bottom: 0;padding-bottom: 50px;"> -->
+        <a href="search_results.html">Find Classes</a>
+        <a href="my_classes.html">My Classes</a>
+        <!--</div>-->
       </div>
+      
+<div id="main">
 
-
-      <div id="main">
-
-          <div class="top_links">
-              <ul>
-                   <!-- Use any element to open the sidenav -->
-             <button id ="nav_btn" type="button" class="btn btn-default btn-sm nav_button" onclick="openNav()" style="float:left">
-                  <span class="material-icons">&#xe8ee;</span>
-             </button>
-                  <h2>COGS 121 SP19 (UCSD)</h2>
-                  <li><a href="search_results.html">Find Classes</a></li>
-                  <li><a href="my_classes.html">My Classes</a></li>
-              </ul>
-          </div>
+    <div class="top_links">
+        <p> <a href="class_page.html"> Class Page </a> > <span class="crumbs">Class Statistics</span></p>
+        <ul>
+             <!-- Use any element to open the sidenav -->
+       <button id ="nav_btn" type="button" class="btn btn-default btn-sm nav_button" onclick="openNav()" style="float:left">
+            <span class="material-icons">&#xe8ee;</span>
+       </button>
+            <h2>COGS 121 SP19 (UCSD)</h2>
+        </ul>
+    </div>
 
           <h1 class="main_header">Class Statistics</h1>
 
@@ -207,7 +197,7 @@ function drawChart() {
 
         <div class="tab-content">
         
-        
+      <!--
           <div id="class_stats" class="tab-pane active">
               <div class="row"  >
           
@@ -219,14 +209,14 @@ function drawChart() {
               </div>  
               <div class="row" style="margin-top:20px">
 
-                  <div class="card content_card col-md-6">
+                  <div class="card content_card col-md-6 stat_cards">
                       <div id="result"class="card-body">
                        
                       </div>
                   </div> 
 
-                  <div class="card content_card col-md-6">
-                      <h3>Your Data</h3>
+                  <div class="card content_card col-md-6 stat_cards">
+                      <h3>Your Class Data</h3>
                       <h5 style="color:blue">Current Class: COGS 121</h5>
                       <h5 style="color:green">AVG Hours Spent: 10.5 Hrs</h5>
                       <h5 style="color:orange">Current Class GPA: 3.0</h5>
@@ -240,7 +230,73 @@ function drawChart() {
       
                 </div>     
           </div>
-      
+        -->
+
+    
+      <div id="class_stats" class="tab-pane active">
+       <div class="container-fluid">
+      <div class="card-columns">
+        <div class="card content_card">
+          <div class="card-body text-center">
+            Course: <input placeholder="Ex.COGS121" id="course_box" type="text" size="20"/>
+            <button id="prof_data">Get Course Data</button>
+            
+            <div id="result"class="card-body"></div>
+          </div>
+        </div>
+
+        <div class="card content_card ">
+          <div class="card-body text-center">
+            <h3>Your Average Class Statistics</h3>
+            <h5 style="color:blue">Current Class: COGS 121</h5>
+            <h5 style="color:green">AVG Hours Spent: 10.5 Hrs</h5>
+            <h5 style="color:orange">Current Class GPA: 3.0</h5>
+          </div>
+        </div>
+
+        <div class="card content_card">
+          <div class="card-body text-center container-fluid">
+            <h3>Number of Comments found in In class session and lecture matieral</h3>
+            <div class="container-fluid" style="text-align:center" id="chart_wrap">
+              <div id="chart_div"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card content_card ">
+          <div class="card-body text-center">
+            <h3>Common Phrases Used to Describe Your Class</h3>
+            <div class="infogram-embed" data-id="5fdb3e20-739a-42ea-9e12-a1ad28ef344d" data-type="interactive" data-title="Data From Class Eval."></div><script>!function(e,t,s,i){var n="InfogramEmbeds",o=e.getElementsByTagName("script")[0],d=/^http:/.test(e.location)?"http:":"https:";if(/^\/{2}/.test(i)&&(i=d+i),window[n]&&window[n].initialized)window[n].process&&window[n].process();else if(!e.getElementById(s)){var r=e.createElement("script");r.async=1,r.id=s,r.src=i,o.parentNode.insertBefore(r,o)}}(document,0,"infogram-async","https://e.infogram.com/js/dist/embed-loader-min.js");</script><div style="padding:8px 0;font-family:Arial!important;font-size:13px!important;line-height:15px!important;text-align:center;border-top:1px solid #dadada;margin:0 30px"><a href="https://infogram.com/5fdb3e20-739a-42ea-9e12-a1ad28ef344d" style="color:#989898!important;text-decoration:none!important;" target="_blank">Data From Class Eval.</a><br><a href="https://infogram.com" style="color:#989898!important;text-decoration:none!important;" target="_blank" rel="nofollow">Infogram</a></div>          </div>
+        </div>
+    
+      </div>
+
+
+    
+
+    </div> 
+
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
        
 
         <div id="student" class="tab-pane fade in">

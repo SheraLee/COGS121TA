@@ -45,14 +45,19 @@ Due to the large amount of students in the classroom, professors need a better w
 ![slides](/milestone_5_pictures/dogs.png)
 1) UI improvment 
 
-  Originally in this page, we hard coded the answers so even you have only three answers add to one question, it is going to show four choices with one undefind choice. Now you are able to add 2 or 5 choices coustomized by professors. 
+  Updated the breadcrumbs on the top for users to better navigate. Get rid of the back buttons we put at the bottom right , and use the breadcrums to make all pages consistant. Add color change when click the save button. 
+
 
 2) Data Display Improvement
+
+
+  Originally in this page, we hard coded the answers so even you have only three answers add to one question, it is going to show four choices with one undefind choice. Now you are able to add 2 or 5 choices coustomized by professors. 
   Now it is only showing total number of choices stored for a specific question.
 
 
 3) More Ambitious Data Display
-  In the future I want to include comment, real statistics from class answers and more flexible manipulation with the questions.
+
+  In the future I want to include comment, real statistics from class answers and more flexible manipulation with the questions. Able to export tables with student's answers and statistics.
 
 
 

@@ -118,14 +118,24 @@ $(document).ready(() => {
   const database = firebase.database();
   
     let ref = firebase.database().ref("side_comments/");
-    ref.orderByChild('Slide').equalTo(1).on("value", function(snapshot) {
+    ref.orderByChild('Type').equalTo('Student').on("value", function(snapshot) {
         console.log(snapshot.val());
         snapshot.forEach(function(data){
         console.log(data.key);
         console.log(data.val());
-        $('#comments').append("<li> <div class='commenterImage'><img src='http://placekitten.com/50/50' > </div> <div class='commentText'><p class=''>"+ data.val().Name + ": "+data.val().Question +
-              "</p> <span class='date sub-text'>on March 5th, 2014</span> <button type='button'  id='solved'  class='btn btn-info btn-xs'  > Remove</button></div> </li>")
         
+        if(data.val().Status == "Unsolved"){
+          $('#Questions').append("<li> <div class='commenterImage'><img src="+ data.val().Profile + "> </div> <div class='commentText'><p class=''>"+ 
+                          data.val().Name + ": "+data.val().Question +
+                          "</p> <span class='date sub-text'>on May 5th, 2019</span> <button type='button'  id='solved'  class='btn btn-info btn-xs'  > solved </button></div> </li>")
+        
+        }
+       else{
+        $('#SolvedQuestion').append("<li> <div class='commenterImage'><img src="+ data.val().Profile + "> </div> <div class='commentText'><p class=''>"+ 
+                          data.val().Name + ": "+data.val().Question +
+                          "</p> <span class='date sub-text'>on May 5th, 2019</span> <button type='button'  id='unsolved'  class='btn btn-info btn-xs' > unsolved </button></div> </li>")
+        
+       }
       });
 
     $("#answered").click( () =>{ 
@@ -211,29 +221,100 @@ $(document).ready(() => {
               <span class="sr-only">Next</span>
             </a>
           </div>
+
+
+          <div class="row bootstrap snippets">
+                <div class="comment-wrapper">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            Comment panel
+                        </div>
+                        <div class="panel-body">
+                            <textarea class="form-control" placeholder="write a comment..." rows="3"></textarea>
+                            <br>
+                            <button type="button" class="btn btn-info pull-right">Post</button>
+                            <div class="clearfix"></div>
+                            <hr>
+                            <ul class="media-list">
+                                <li class="media">
+                                    <a href="#" class="pull-left">
+                                        <img src="https://bootdey.com/img/Content/user_1.jpg" alt="" class="img-circle">
+                                    </a>
+                                    <div class="media-body">
+                                        <span class="text-muted pull-right">
+                                            <small class="text-muted">30 min ago</small>
+                                        </span>
+                                        <strong class="text-success">@MartinoMont</strong>
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                            Lorem ipsum dolor sit amet, <a href="#">#consecteturadipiscing </a>.
+                                        </p>
+                                    </div>
+                                </li>
+                                <li class="media">
+                                    <a href="#" class="pull-left">
+                                        <img src="https://bootdey.com/img/Content/user_2.jpg" alt="" class="img-circle">
+                                    </a>
+                                    <div class="media-body">
+                                        <span class="text-muted pull-right">
+                                            <small class="text-muted">30 min ago</small>
+                                        </span>
+                                        <strong class="text-success">@LaurenceCorreil</strong>
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                            Lorem ipsum dolor <a href="#">#ipsumdolor </a>adipiscing elit.
+                                        </p>
+                                    </div>
+                                </li>
+                                <li class="media">
+                                    <a href="#" class="pull-left">
+                                        <img src="https://bootdey.com/img/Content/user_3.jpg" alt="" class="img-circle">
+                                    </a>
+                                    <div class="media-body">
+                                        <span class="text-muted pull-right">
+                                            <small class="text-muted">30 min ago</small>
+                                        </span>
+                                        <strong class="text-success">@JohnNida</strong>
+                                        <p>
+                                            Lorem ipsum dolor <a href="#">#sitamet</a> sit amet, consectetur adipiscing elit.
+                                        </p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+        </div>    
     </div>
 
 
     
+
+
+
+
+
+
+
+
+
+
     <div class="col col-md-4">
       <div class="detailBox">
         <div class="titleBox">
-          <label>Comment Section</label>
+          <label>Questions</label>
         </div>
-        <div class="commentBox">
-            <label>Instructor says:</label>
-            <p class="taskDescription">the reason balablabala</p>
-        </div>
+
         <div class="actionBox">
             <ul class="commentList">
-                <div id = "comments" ></div>
+                <div id = "Questions" ></div>
                 <li>
                     <div class="commenterImage">
                       <img src="http://placekitten.com/50/50" />
                     </div>
                     <div class="commentText">
                         <p class="">Hello this is a test comment.</p> <span class="date sub-text">on March 5th, 2014</span>
-                        <button type="button"  id="solved"  class="btn btn-info btn-xs">Remove <span class="glyphicon glyphicon-remove"></span>
+                        <button type="button"  id="solved"  class="btn btn-info btn-xs">solved <span class="glyphicon glyphicon-remove"></span>
 
                     </div>
                 </li>
@@ -243,7 +324,7 @@ $(document).ready(() => {
                     </div>
                     <div class="commentText">
                         <p class="">Hello this is a test comment and this comment is particularly very long and it goes on and on and on.</p> <span class="date sub-text">on March 5th, 2014</span>
-                        <button type="button"  id="solved"  class="btn btn-info btn-xs">Remove <span class="glyphicon glyphicon-remove"></span>
+                        <button type="button"  id="unsolved"  class="btn btn-info btn-xs">solved <span class="glyphicon glyphicon-remove"></span>
                     </div>
                 </li>
                 <li>
@@ -252,7 +333,7 @@ $(document).ready(() => {
                     </div>
                     <div class="commentText">
                         <p class="">Hello this is a test comment.</p> <span class="date sub-text">on March 5th, 2014</span>
-                        <button type="button"  id="solved"  class="btn btn-info btn-xs">Remove <span class="glyphicon glyphicon-remove"></span>
+                        <button type="button"  id="unsolved"  class="btn btn-info btn-xs">solved <span class="glyphicon glyphicon-remove"></span>
 
                     </div>
                 </li>
@@ -268,18 +349,53 @@ $(document).ready(() => {
         </div>
     </div>
 
-      
 
+      <div class="detailBox">
+        <div class="titleBox">
+          <label>Solved Questions</label>
+        </div>
+        <div class="actionBox">
+            <ul class="commentList">
+                <div id = "SolvedQuestion" ></div>
+                <li>
+                    <div class="commenterImage">
+                      <img src="http://placekitten.com/50/50" />
+                    </div>
+                    <div class="commentText">
+                        <p class="">Hello this is a test comment.</p> <span class="date sub-text">on March 5th, 2014</span>
+                        <button type="button"  id="solved"  class="btn btn-info btn-xs">solved <span class="glyphicon glyphicon-remove"></span>
 
-      <!-- <div class="row">
-            <input id= "comment" style = "width:500px" type = "text" name = "comment" placeholder = "add a comment" >
-            <button id="post" >Post</button>
-      </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="commenterImage">
+                      <img src="http://placekitten.com/45/45" />
+                    </div>
+                    <div class="commentText">
+                        <p class="">Hello this is a test comment and this comment is particularly very long and it goes on and on and on.</p> <span class="date sub-text">on March 5th, 2014</span>
+                        <button type="button"  id="solved"  class="btn btn-info btn-xs">solved <span class="glyphicon glyphicon-remove"></span>
+                    </div>
+                </li>
+                <li>
+                    <div class="commenterImage">
+                      <img src="http://placekitten.com/40/40" />
+                    </div>
+                    <div class="commentText">
+                        <p class="">Hello this is a test comment.</p> <span class="date sub-text">on March 5th, 2014</span>
+                        <button type="button"  id="solved"  class="btn btn-info btn-xs">solved <span class="glyphicon glyphicon-remove"></span>
 
-      <div class="row">
-        <input id= "name" style = "width:500px" type = "text" name = "comment" placeholder = "solved whose question" >
-            <button id = "answered"> solved  </button>
-    </div> -->
+                    </div>
+                </li>
+            </ul>
+            <form class="form-inline" role="form">
+                <div class="form-group">
+                    <input id="comment" class="form-control" type="text" placeholder="Your comments" />
+                </div>
+                <div class="form-group">
+                    <button id="post" type="button" class="btn">Add</button>
+                </div>
+            </form>
+        </div>
 </div>
 </div>>
 

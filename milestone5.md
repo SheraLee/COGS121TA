@@ -57,6 +57,6 @@ Due to the large amount of students in the classroom, professors need a better w
 ## Other UI upgrades
 
 ### Side NavBar and Crumbs
-![slides](/milestone_5_pictures/sidebar.png)
+![slides](/milestone_5_pictures/sidebar.PNG)
   
   For this minor upgrade, we decided to move the "Find Classes" and "My Classes" link to the side navbar. We also decided to add breadcrumbs to the top of the interface to help users see where they are and also give them the ability to go back to a specific page.

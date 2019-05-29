@@ -17,6 +17,9 @@ Due to the large amount of students in the classroom, professors need a better w
 
   Besides those short period feedbacks from students, the professor can also compare his class with past year classes to check if his class is in good progress.This can provide teh professor a big picture of how the class is going. 
 
+3) Add Questions and start active session
+  Professors are able to add class materials, attendance questions on the site. By going to edit session, users can add questions with image, write up, answer. Users can also go to class material session to add slides/pdf. In active session, users can search for any questions number and get the question displayed on the cite.
+
 
 ## Visualization Upgrade Pictures and Future Ideas
 
@@ -35,6 +38,23 @@ Due to the large amount of students in the classroom, professors need a better w
 3) More ambitious data display
 
   In the future, we may show the question in the order of how many students has the same problems. We may can also get the sentimental score of those questions to show those ergent question at the top, or color coding the.
+
+
+### Edit Page and Active Session
+![slides](/milestone_5_pictures/edit.png)
+![slides](/milestone_5_pictures/dogs.png)
+1) UI improvment 
+
+  Originally in this page, we hard coded the answers so even you have only three answers add to one question, it is going to show four choices with one undefind choice. Now you are able to add 2 or 5 choices coustomized by professors. 
+
+2) Data Display Improvement
+  Now it is only showing total number of choices stored for a specific question.
+
+
+3) More Ambitious Data Display
+  In the future I want to include comment, real statistics from class answers and more flexible manipulation with the questions.
+
+
 
 
 ### Statistics Page

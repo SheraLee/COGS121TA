@@ -39,11 +39,14 @@ Due to the large amount of students in the classroom, professors need a better w
 ![slides](/milestone_5_pictures/evaluation.png)
 
 1) UI Improvement
+
   This time we used the card-column class from bootstrap to have responsive rows/columns and to have them
   properly spaced out. We also split up statistics into their own individual card for the user to make it easier for the user. 
 
 2) Data Display Improvement
+
   For this iteration, we added a couple of things. first big display we addded was a word cloud that takes in data from a connected google sheet and displays the words on various sizes(depending on the word count). Since we're using a infogram to embeded the word cloud, we unfortunately cannot get the data in real time and as a result, we need to manually reload the data from their site. Another thing we added was the piechart using google's API. This gathers data from our firebase and displays it as a piechart. Finally, our Class average GPA is connected to the firebase and will update based on the students grade.
 
 3) More Ambitious Data Display
+
   For future visualization ideas, we would prefer that our word cloud be updated synchronously to help keep the user up to date. Another visualization idea that we had in mind, was the ability to show off more misc. information. Due to time constraints, we’re only able to visualize some of our data that could be gathered from students. Another idea that we had in mind was the ability to add some form of visualization to the active session. Visualization in the active session can help display the answers that students give and can be helpful for both teacher and student.

@@ -1,5 +1,6 @@
 # Milestone 5
 
+
 ## How target user would use your app in order to help them achieve relevant goals.
 
 Our target users are professors teaching in larger classrooms.
@@ -18,8 +19,6 @@ Due to the large amount of students in the classroom, professors need a better w
 
 
 ## Visualization Upgrade Pictures and Future Ideas
-
-
 
 ### Sides Page 
 ![slides](/milestone_5_pictures/slides.png)
@@ -55,8 +54,8 @@ Due to the large amount of students in the classroom, professors need a better w
   For future visualization ideas, we would prefer that our word cloud be updated synchronously to help keep the user up to date. Another visualization idea that we had in mind, was the ability to show off more misc. information. Due to time constraints, we’re only able to visualize some of our data that could be gathered from students. Another idea that we had in mind was the ability to add some form of visualization to the active session. Visualization in the active session can help display the answers that students give and can be helpful for both teacher and student.
 
 
-
 ## Other UI upgrades
+
 ### Side NavBar and Crumbs
 ![slides](/milestone_5_pictures/sidebar.png)
   

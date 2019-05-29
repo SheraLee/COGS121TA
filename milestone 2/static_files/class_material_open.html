@@ -184,7 +184,9 @@ function myFunction() {
         })
       })
       
-   //   window.location.reload()
+   setTimeout(function(){
+   window.location.reload(1);
+}, 5000);
 }
 
 
@@ -198,7 +200,9 @@ function myFunctionT() {
           database.ref("side_comments/"+ data.key).update({ Status: "Unsolved"  });
         })
       })
-    //window.location.reload()
+   setTimeout(function(){
+   window.location.reload(1);
+}, 2000);
 }
 
 

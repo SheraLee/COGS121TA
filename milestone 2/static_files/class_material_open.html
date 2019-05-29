@@ -132,54 +132,32 @@ $(document).ready(() => {
     let ref = firebase.database().ref("side_comments/");
 
     ref.orderByChild('Type').equalTo('Student').on("value", function(snapshot) {
-        console.log(snapshot.val());
         snapshot.forEach(function(data){
-        console.log(data.key);
-        console.log(data.val());
-        
         if(data.val().Status == "Unsolved"){
-          $('#Questions').append("<li> <div class='commenterImage'><img src="+ data.val().Profile + "> </div> <div class='commentText'><p class=''>"+ 
-                          data.val().Name + ": "+data.val().Question +
-                          "</p> <span class='date sub-text'>on May 5th, 2019</span> <button type='button'  id='solved'  class='btn btn-info btn-xs'  > solved </button></div> </li>")
+          $('#Questions').append("<li> <div class='commenterImage'><img src="+ data.val().Profile + "> </div> <div class='commentText'><p class ='unsolvedQuestion'>"+ 
+                          data.val().Question +
+                          "</p> <span class='date sub-text'>on May 5th, 2019</span> <button type='button' onclick='myFunction()'  id='solved' class='btn btn-info btn-xs'  > solved </button></div> </li>")
         
         }
        else{
-          $('#SolvedQuestion').append("<li> <div class='commenterImage'><img src="+ data.val().Profile + "> </div> <div class='commentText'><p class=''>"+ 
-                          data.val().Name + ": "+data.val().Question +
-                          "</p> <span class='date sub-text'>on May 5th, 2019</span> <button type='button'  id='unsolved'  class='btn btn-info btn-xs' > unsolved </button></div> </li>")
+          $('#SolvedQuestion').append("<li> <div class='commenterImage'><img src="+ data.val().Profile + "> </div> <div class='commentText'><p class='solvedQuestion'>"+ 
+                           data.val().Question +
+                          "</p> <span class='date sub-text'>on May 5th, 2019</span> <button type='button' onclick='myFunctionT()' class='btn btn-info btn-xs' > unsolved </button></div> </li>")
           }
        })      
     });
 
     ref.orderByChild('Type').equalTo('Instructor').on("value", function(snapshot) {
-        console.log(snapshot.val());
         snapshot.forEach(function(data){
-        console.log(data.key);
-        console.log(data.val());
         $('#TAcomments').append( "<li class='media'> <a href='#' class='pull-left'> <img src='https://bootdey.com/img/Content/user_1.jpg'  class='img-circle'>  </a>" + 
                                   " <div class='media-body'> <span class='text-muted pull-right'> <small class='text-muted'>30 min ago</small> </span>" +
                                   "<strong class='text-success'>Professor</strong>" + " <p> " + data.val().Comment + "</p></div> </li>")
     
         })
       });    
-  
-
-    $("#answered").click( () =>{ 
-      let name = $("#name").val();
-      console.log(name);
-      ref.orderByChild('Name').equalTo(name).once('value').then(function(snapshot) {
-        snapshot.forEach(function(childSnapshot) {
-        //remove each child
-          ref.child(childSnapshot.key).remove();
-          console.log("deleted");
-        });
-      });
-      window.location.reload()
-    })   
 
     $("#post").click( () =>{ 
       let toAdd = $("#TAcomment").val();
-      console.log(toAdd);
       var toAddRef = ref.push();
       toAddRef.set({
        Name: "Professor Guo",
@@ -191,6 +169,39 @@ $(document).ready(() => {
     }) 
 
 });
+
+var database = firebase.database();
+let ref = firebase.database().ref("side_comments/");
+
+function myFunction() {
+      Question = $(event.target ).closest('.commentText').find('.unsolvedQuestion').text()
+      console.log(Question)
+
+      ref.orderByChild('Question').equalTo(Question).once('value').then(function(snapshot) {
+        snapshot.forEach(function(data){
+          console.log(data.key)
+          database.ref("side_comments/"+ data.key).update({ Status: "solved"  });
+        })
+      })
+      
+   //   window.location.reload()
+}
+
+
+function myFunctionT() {
+      Question = $(event.target ).closest('.commentText').find('.solvedQuestion').text()
+      console.log(Question)
+
+      ref.orderByChild('Question').equalTo(Question).once('value').then(function(snapshot) {
+        snapshot.forEach(function(data){
+          console.log(data.key)
+          database.ref("side_comments/"+ data.key).update({ Status: "Unsolved"  });
+        })
+      })
+    //window.location.reload()
+}
+
+
 
 </script>
 </head>
@@ -333,9 +344,8 @@ $(document).ready(() => {
                       <img src="http://placekitten.com/50/50" />
                     </div>
                     <div class="commentText">
-                        <p class="">Hello this is a test comment.</p> <span class="date sub-text">on March 5th, 2014</span>
-                        <button type="button"  id="solved"  class="btn btn-info btn-xs">solved <span class="glyphicon glyphicon-remove"></span>
-
+                        <p class="unsolvedQuestion">Hello this is a test comment.</p> <span class="date sub-text">on March 5th, 2014</span>
+                        <button onclick="myFunction()" type="button"  class='btn btn-info btn-xs'>solved </button>
                     </div>
                 </li>
                 <li>
@@ -343,29 +353,13 @@ $(document).ready(() => {
                       <img src="http://placekitten.com/45/45" />
                     </div>
                     <div class="commentText">
-                        <p class="">Hello this is a test comment and this comment is particularly very long and it goes on and on and on.</p> <span class="date sub-text">on March 5th, 2014</span>
-                        <button type="button"  id="unsolved"  class="btn btn-info btn-xs">solved <span class="glyphicon glyphicon-remove"></span>
-                    </div>
+                        <p class = "unsolvedQuestion" >Hello this is a test comment and this comment is particularly very long and it goes on and on and on.</p> <span class="date sub-text">on March 5th, 2014</span>
+                        <button onclick="myFunction()" type="button"  class='btn btn-info btn-xs'> solved </button>
+                      </div>
                 </li>
-                <li>
-                    <div class="commenterImage">
-                      <img src="http://placekitten.com/40/40" />
-                    </div>
-                    <div class="commentText">
-                        <p class="">Hello this is a test comment.</p> <span class="date sub-text">on March 5th, 2014</span>
-                        <button type="button"  id="unsolved"  class="btn btn-info btn-xs">solved <span class="glyphicon glyphicon-remove"></span>
 
-                    </div>
-                </li>
             </ul>
-            <form class="form-inline" role="form">
-                <div class="form-group">
-                    <input id="comment" class="form-control" type="text" placeholder="Your comments" />
-                </div>
-                <div class="form-group">
-                    <button id="post" type="button" class="btn">Add</button>
-                </div>
-            </form>
+
         </div>
     </div>
 
@@ -382,9 +376,8 @@ $(document).ready(() => {
                       <img src="http://placekitten.com/50/50" />
                     </div>
                     <div class="commentText">
-                        <p class="">Hello this is a test comment.</p> <span class="date sub-text">on March 5th, 2014</span>
-                        <button type="button"  id="solved"  class="btn btn-info btn-xs">unsolved <span class="glyphicon glyphicon-remove"></span>
-
+                        <p class="solvedQuestion">Hello this is a test comment.</p> <span class="date sub-text">on March 5th, 2014</span>
+                        <button type="button"  onclick="myFunctionT()" class="btn btn-info btn-xs">unsolved <span class="glyphicon glyphicon-remove"></span>
                     </div>
                 </li>
                 <li>
@@ -392,29 +385,11 @@ $(document).ready(() => {
                       <img src="http://placekitten.com/45/45" />
                     </div>
                     <div class="commentText">
-                        <p class=""> Hello this is a test comment and this comment is particularly very long and it goes on and on and on.</p> <span class="date sub-text">on March 5th, 2014</span>
-                        <button type="button"  id="solved"  class="btn btn-info btn-xs">unsolved <span class="glyphicon glyphicon-remove"></span>
-                    </div>
-                </li>
-                <li>
-                    <div class="commenterImage">
-                      <img src="http://placekitten.com/40/40" />
-                    </div>
-                    <div class="commentText">
-                        <p class="">Hello this is a test comment.</p> <span class="date sub-text">on March 5th, 2014</span>
-                        <button type="button"  id="solved"  class="btn btn-info btn-xs">unsolved <span class="glyphicon glyphicon-remove"></span>
-
+                        <p class="solvedQuestion"> Hello this is a test comment and this comment is particularly very long and it goes on and on and on.</p> <span class="date sub-text">on March 5th, 2014</span>
+                        <button type="button" onclick="myFunctionT()"  class="btn btn-info btn-xs">unsolved <span class="glyphicon glyphicon-remove"></span>
                     </div>
                 </li>
             </ul>
-            <form class="form-inline" role="form">
-                <div class="form-group">
-                    <input id="comment" class="form-control" type="text" placeholder="Your comments" />
-                </div>
-                <div class="form-group">
-                    <button id="post" type="button" class="btn">Add</button>
-                </div>
-            </form>
         </div>
 </div>
 </div>>

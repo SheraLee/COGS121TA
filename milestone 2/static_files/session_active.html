@@ -77,9 +77,15 @@ $('#readButton').click(() => {
         $('#content').html(data.question);
         $('#file').attr('src', data.file).attr('width', '300px')
 
+
+
         $('#A').html('A: ' + data.answer1);
         $('#B').html('B: ' + data.answer2);
         $('#C').html('C: ' + data.answer3);
+        $('#D').html('D: ' + data.answer4);
+        $('#E').html('E: ' + data.answer5);
+
+
         //$('#exampleFormControlTextarea1').html('Question: ' + data.question);
 
       } else {
@@ -91,6 +97,9 @@ $('#readButton').click(() => {
       });
 
 
+
+$('#next').click(() => {
+  
 
 
   })
@@ -116,41 +125,47 @@ $('#readButton').click(() => {
 
 
       
-  <div id="main">
+  <div id="main" >
 
-    <div class="top_links">
+          <div class="top_links" style="margin-left:20px">
+        <p> <a href="class_page.html"> Class Page </a> > <span class="crumbs">Active Session</span></p>
+        <ul>
         <ul>
              <!-- Use any element to open the sidenav -->
        <button id ="nav_btn" type="button" class="btn btn-default btn-sm nav_button" onclick="openNav()" style="float:left">
             <span class="material-icons">&#xe8ee;</span>
        </button>
-            <h2>COGS 121 SP19 (UCSD)</h2>
-            <li><a href="search_results.html">Find Classes</a></li>
-            <li><a href="my_classes.html">My Classes</a></li>
+
         </ul>
     </div>
 
 
 
-<div class="container">
+
+
+
+<div class="container" style="margin-left:20px">
+  <h1 class="main_header">Active Session</h1>
 <input id="Question_number" type="text" size="20" style="margin-top:20px" />
         <button id="readButton">Get the question</button>
   <div class="row">
     <div class="col">
       <div class="card content_card card w-100" style="margin-top:50px">
-        <H1>COGS121</H1>
-  <img class="card-img-top" src="#"  id = 'file'>
+        <H1 style = "margin-left: 20px">COGS121</H1>
+  <img class="card-img-top" src=""  id = 'file'>
   <div class="card-body">
-    <h5 class="card-title" id = 'question'>Question 1</h5>
+    <h5 class="card-title" id = 'question'>Question </h5>
     <p class="card-text" id = 'content'>What is the anwser of this question?</p>
   </div>
   <ul class="list-group list-group-flush">
     <li class="list-group-item" id = 'A'>A.</li>
     <li class="list-group-item" id = 'B'>B.</li>
     <li class="list-group-item"id = 'C'>C.</li>
+    <li class="list-group-item" id = 'D'>D.</li>
+    <li class="list-group-item"id = 'E'>E.</li>
   </ul>
   <div class="card content_card card-body">
-    <a href="#" class="card-link text-right">next</a>
+    <button id="next" class="btn button_style"  style="margin-left: 400px">Next</button>
   </div>
 </div>
 
@@ -158,7 +173,7 @@ $('#readButton').click(() => {
     <div class="col">
       <div class="card content_card card w-100" style="margin-top:50px">
   <figure class="figure">
-  <img src="question_stats.jpg" class="figure-img img-fluid rounded" alt="A figure visualize class performance statistics.">
+  <img src="statistics.png" class="figure-img img-fluid rounded" alt="A figure visualize class performance statistics.">
   <figcaption class="figure-caption" style="margin-left:20px">Accuracy of class.</figcaption>
 </figure>
   <div class="card-body">
@@ -168,7 +183,7 @@ $('#readButton').click(() => {
   </div>
 </div>
 
-    <a href="class_page.html" class="btn btn-primary button_style" style="margin-top:10px" role="button" aria-pressed="true">Back</a>
+    
     </div>
     
   </div>

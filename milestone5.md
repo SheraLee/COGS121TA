@@ -16,7 +16,10 @@ Due to the large amount of students in the classroom, professors need a better w
 
   Besides those short period feedbacks from students, the professor can also compare his class with past year classes to check if his class is in good progress.This can provide teh professor a big picture of how the class is going. 
 
+
 ## Visualization Upgrade Pictures and Future Ideas
+
+
 
 ### Sides Page 
 ![slides](/milestone_5_pictures/slides.png)
@@ -50,3 +53,11 @@ Due to the large amount of students in the classroom, professors need a better w
 3) More Ambitious Data Display
 
   For future visualization ideas, we would prefer that our word cloud be updated synchronously to help keep the user up to date. Another visualization idea that we had in mind, was the ability to show off more misc. information. Due to time constraints, we’re only able to visualize some of our data that could be gathered from students. Another idea that we had in mind was the ability to add some form of visualization to the active session. Visualization in the active session can help display the answers that students give and can be helpful for both teacher and student.
+
+
+
+## Other UI upgrades
+### Side NavBar and Crumbs
+![slides](/milestone_5_pictures/sidebar.png)
+  
+  For this minor upgrade, we decided to move the "Find Classes" and "My Classes" link to the side navbar. We also decided to add breadcrumbs to the top of the interface to help users see where they are and also give them the ability to go back to a specific page.

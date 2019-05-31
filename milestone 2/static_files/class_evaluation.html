@@ -42,10 +42,12 @@
 
 $(document).ready(() => {
   const database = firebase.database();
+  
+  /*
   database.ref('students/Vincent').set({grade:'C', attendance:'85', gpa:'2.0'});
   database.ref('students/Yanyi').set({grade:'A', attendance:'90', gpa: '4.0'});
   database.ref('students/Shera').set({grade:'B', attendance:'40', gpa:'3.0'});
-
+  */
   database.ref("students/").on('value', (snapshot) => {
       $('#gradeDiv').html('<h3>Students</h3>'+ "<table id='data' class='table table-responsive table-striped'><tr> <th>Student</th> <th>Grade</th> <th>Attendance</th></tr></table>")
       snapshot.forEach(function(data){
@@ -197,6 +199,9 @@ $(document).ready(() => {
 // Load google charts
 google.charts.load('current', {'packages':['corechart']});
 google.charts.setOnLoadCallback(drawChart);
+google.charts.setOnLoadCallback(bar_grades);
+google.charts.setOnLoadCallback(cape_hours("COGS121"));
+google.charts.setOnLoadCallback(cape_gpa("COGS121"));
 
 // Draw the chart and set the chart values
 function drawChart() {
@@ -211,7 +216,7 @@ database.ref("side_comments").on("value", function(snapshot) {
 ]);
 
   // Optional; add a title and set the width and height of the chart
-  var options = {'title':'Number of Comments per Content', width:'400', height:'450'};
+  var options = {'title':'Number of Comments per Content', width:'400', height:'250'};
 
   // Display the chart inside the <div> element with id="piechart"
   var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
@@ -219,8 +224,147 @@ database.ref("side_comments").on("value", function(snapshot) {
 
 
 });
- 
 }
+
+  function bar_grades() {
+    
+      database.ref("students").orderByChild('grade').on('value', (snapshot) => {
+      console.log("grade =" + snapshot.val());
+      let avg_count = 0;
+      let avg_gpa = 0;
+      let A=0, B=0, C=0, D=0, F=0;
+      snapshot.forEach(function(data){
+        
+        console.log("data =" + data.val().grade);
+        switch(data.val().grade){
+          case 'A':
+            A++;
+            break;
+          case 'B':
+            B++;
+            break;
+          case 'C':
+            C++;
+            break;
+          case 'D':
+            D++;
+            break;
+          default:
+            F++;
+        break;
+        }
+
+        
+        
+        var data = google.visualization.arrayToDataTable([
+        ["Grade", "Amount", { role: "style" } ],
+        ["A", A, "color:#306bac"],
+        ["B", B, "color:#306bac"],
+        ["C", C, "color:#306bac"],
+        ["D", D, "color:#306bac"],
+        ["F", F, "color:#306bac"],
+      ]);
+
+      var view = new google.visualization.DataView(data);
+      view.setColumns([0, 1,
+                       { calc: "stringify",
+                         sourceColumn: 1,
+                         type: "string",
+                         role: "annotation" },
+                       2]);
+      
+
+                       var options = {
+        title: "Current Student Grades",
+        width: 400,
+        height: 400,
+        bar: {groupWidth: "95%"},
+        legend: { position: "none" },
+      };
+      var chart = new google.visualization.ColumnChart(document.getElementById("bar_grades"));
+      chart.draw(view, options);
+      });
+    
+     
+    });
+
+  }
+
+
+  function cape_hours(course){
+    
+    database.ref("cape_data").orderByChild('subject_course').equalTo(course).once('value', (snapshot) => {
+      console.log("grade =" + snapshot.val());
+      
+      let hour_data= [['Professor[Term]','Hours']]
+      
+    
+      snapshot.forEach(function(data){
+        let prof = data.val().instructor+'['+data.val().term+']';
+        let hours = parseFloat(data.val().study_hours_per_week);
+        const newHours = [prof,hours];
+        hour_data.push(newHours);
+        
+      });
+      console.log("HOurs = " + hour_data );
+  
+      var data = google.visualization.arrayToDataTable(hour_data);
+
+      var options = {
+        title: 'Hours spent studying',
+        chartArea: {width: '50%'},
+        hAxis: {
+          title: 'Hours',
+          minValue: 0
+        },
+        vAxis: {
+          title: 'Professors [Term]'
+        }
+      };
+
+      var chart = new google.visualization.BarChart(document.getElementById('cape_hours'));
+
+      chart.draw(data, options);
+    });
+
+  }
+
+  function cape_gpa(course){
+    
+    database.ref("cape_data").orderByChild('subject_course').equalTo(course).once('value', (snapshot) => {
+      console.log("grade =" + snapshot.val());
+      
+      let gpa_data= [['Professor[Term]','Gpa']]
+      
+    
+      snapshot.forEach(function(data){
+        let prof = data.val().instructor+'['+data.val().term+']';
+        let gpa = parseFloat(data.val().avg_gpa_received);
+        const newGpa = [prof,gpa];
+        gpa_data.push(newGpa);
+        
+      });
+      console.log("HOurs = " + gpa_data );
+  
+      var data = google.visualization.arrayToDataTable(gpa_data);
+
+      var options = {
+          title: 'Average GPA Received for this course (Based on CAPE data)',
+          legend: { position: 'none' },
+        };
+
+        var chart = new google.visualization.Histogram(document.getElementById('cape_gpa'));
+        chart.draw(data, options);
+    });
+
+  }
+
+
+
+
+
+
+
 
 
 });
@@ -321,15 +465,7 @@ database.ref("side_comments").on("value", function(snapshot) {
       <div id="class_stats" class="tab-pane active">
        <div class="container-fluid">
       <div class="card-columns">
-        <div class="card content_card">
-          <div class="card-body text-center">
-            Course: <input placeholder="Ex.COGS121" id="course_box" type="text" size="20"/>
-            <button id="prof_data">Get Course Data</button>
-            
-            <div id="result"class="card-body"></div>
-          </div>
-        </div>
-
+        
         <div class="card content_card ">
           <div class="card-body text-center">
             <h3>Your Average Class Statistics</h3>
@@ -354,11 +490,59 @@ database.ref("side_comments").on("value", function(snapshot) {
             <div class="infogram-embed" data-id="5fdb3e20-739a-42ea-9e12-a1ad28ef344d" data-type="interactive" data-title="Data From Class Eval."></div><script>!function(e,t,s,i){var n="InfogramEmbeds",o=e.getElementsByTagName("script")[0],d=/^http:/.test(e.location)?"http:":"https:";if(/^\/{2}/.test(i)&&(i=d+i),window[n]&&window[n].initialized)window[n].process&&window[n].process();else if(!e.getElementById(s)){var r=e.createElement("script");r.async=1,r.id=s,r.src=i,o.parentNode.insertBefore(r,o)}}(document,0,"infogram-async","https://e.infogram.com/js/dist/embed-loader-min.js");</script><div style="padding:8px 0;font-family:Arial!important;font-size:13px!important;line-height:15px!important;text-align:center;border-top:1px solid #dadada;margin:0 30px"><a href="https://infogram.com/5fdb3e20-739a-42ea-9e12-a1ad28ef344d" style="color:#989898!important;text-decoration:none!important;" target="_blank">Data From Class Eval.</a><br><a href="https://infogram.com" style="color:#989898!important;text-decoration:none!important;" target="_blank" rel="nofollow">Infogram</a></div>          </div>
         </div>
     
+
+
+        <div class="card content_card">
+          <div class="card-body text-center container-fluid">
+            <h3>Current Grade Distribution</h3>
+            <div class="container-fluid" style="text-align:center">
+              <div id="bar_grades" style="overflow: auto"></div>
+            </div>
+          </div>
+        </div>
+
+
+  
+
       </div>
 
 
-    
+      
+        <div class="card-columns">
+            <div class="card content_card">
+              <div class="card-body text-center container-fluid">
+                <h3>Average Hours Spent Studying for this course (Based off CAPE data)</h3>
+                <div class="container-fluid" style="text-align:center">
+                  <div id="cape_gpa" style="overflow: auto"></div>
+                </div>
+              </div>
+            </div>
 
+            <div class="card content_card">
+                <div class="card-body text-center container-fluid">
+                  <h3>Average Hours Spent Studying for this course (Based off CAPE data)</h3>
+                  <div class="container-fluid" style="text-align:center">
+                    <div id="cape_hours" style="overflow: auto"></div>
+                  </div>
+                </div>
+              </div>
+
+          <div class="card content_card">
+              <div class="card-body text-center">
+                Course: <input placeholder="Ex.COGS121" id="course_box" type="text" size="20"/>
+                <button id="prof_data">Get Course Data</button>
+                
+                <div id="result"class="card-body"></div>
+              </div>
+            </div>
+
+
+
+        
+      </div>
+
+
+  
     </div> 
 
 

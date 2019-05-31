@@ -132,13 +132,15 @@
   
 }
 
-#chart_wrap {
+/*#chart_wrap {
   position: relative;
-  padding-bottom: 100%;
+  padding-bottom: 80;
   height: 0;
   overflow:hidden;
 }
+*/
 
+/*
 #chart_div {
   position: absolute;
   top: 0;
@@ -146,6 +148,7 @@
   width: 100%; 
   min-height: 450px;
 }
+*/
 
 .crumbs{
   color:#112EEE;

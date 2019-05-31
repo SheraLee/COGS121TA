@@ -319,7 +319,10 @@ database.ref("side_comments").on("value", function(snapshot) {
         },
         vAxis: {
           title: 'Professors [Term]'
-        }
+        },
+        width:'400', 
+        height:'250'
+
       };
 
       var chart = new google.visualization.BarChart(document.getElementById('cape_hours'));
@@ -351,6 +354,8 @@ database.ref("side_comments").on("value", function(snapshot) {
       var options = {
           title: 'Average GPA Received for this course (Based on CAPE data)',
           legend: { position: 'none' },
+          width:'400', 
+          height:'250'
         };
 
         var chart = new google.visualization.Histogram(document.getElementById('cape_gpa'));
@@ -467,7 +472,7 @@ database.ref("side_comments").on("value", function(snapshot) {
       <div class="card-columns">
         
         <div class="card content_card ">
-          <div class="card-body text-center">
+          <div class="card-body text-center ">
             <h3>Your Average Class Statistics</h3>
             <h5 style="color:blue">Current Class: COGS 121</h5>
             <h5 style="color:green">Average Hours Spent: 10.5 Hrs</h5>
@@ -476,7 +481,7 @@ database.ref("side_comments").on("value", function(snapshot) {
         </div>
 
         <div class="card content_card">
-          <div class="card-body text-center container-fluid">
+          <div class="card-body text-center container-fluid ">
             <h3>Number of Comments found in In class session and lecture matieral</h3>
             <div class="container-fluid" style="text-align:center" id="chart_wrap">
               <div id="chart_div" style="overflow: auto"></div>
@@ -485,7 +490,7 @@ database.ref("side_comments").on("value", function(snapshot) {
         </div>
 
         <div class="card content_card ">
-          <div class="card-body text-center">
+          <div class="card-body text-center ">
             <h3>Common Phrases Used to Describe Your Class</h3>
             <div class="infogram-embed" data-id="5fdb3e20-739a-42ea-9e12-a1ad28ef344d" data-type="interactive" data-title="Data From Class Eval."></div><script>!function(e,t,s,i){var n="InfogramEmbeds",o=e.getElementsByTagName("script")[0],d=/^http:/.test(e.location)?"http:":"https:";if(/^\/{2}/.test(i)&&(i=d+i),window[n]&&window[n].initialized)window[n].process&&window[n].process();else if(!e.getElementById(s)){var r=e.createElement("script");r.async=1,r.id=s,r.src=i,o.parentNode.insertBefore(r,o)}}(document,0,"infogram-async","https://e.infogram.com/js/dist/embed-loader-min.js");</script><div style="padding:8px 0;font-family:Arial!important;font-size:13px!important;line-height:15px!important;text-align:center;border-top:1px solid #dadada;margin:0 30px"><a href="https://infogram.com/5fdb3e20-739a-42ea-9e12-a1ad28ef344d" style="color:#989898!important;text-decoration:none!important;" target="_blank">Data From Class Eval.</a><br><a href="https://infogram.com" style="color:#989898!important;text-decoration:none!important;" target="_blank" rel="nofollow">Infogram</a></div>          </div>
         </div>
@@ -493,7 +498,7 @@ database.ref("side_comments").on("value", function(snapshot) {
 
 
         <div class="card content_card">
-          <div class="card-body text-center container-fluid">
+          <div class="card-body text-center container-fluid ">
             <h3>Current Grade Distribution</h3>
             <div class="container-fluid" style="text-align:center">
               <div id="bar_grades" style="overflow: auto"></div>
@@ -510,7 +515,7 @@ database.ref("side_comments").on("value", function(snapshot) {
       
         <div class="card-columns">
             <div class="card content_card">
-              <div class="card-body text-center container-fluid">
+              <div class="card-body text-center container-fluid ">
                 <h3>Average Hours Spent Studying for this course (Based off CAPE data)</h3>
                 <div class="container-fluid" style="text-align:center">
                   <div id="cape_gpa" style="overflow: auto"></div>

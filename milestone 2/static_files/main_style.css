@@ -91,11 +91,12 @@
         transition: 0.3s;
       }
       
-      .sidenav h1 {
+      .sidenav h1 a{
         padding: 8px 5px 8px 32px;
         text-decoration: none;
         color: white;
         display: block;
+        font-size: 40px;
         transition: 0.3s;
       }
       

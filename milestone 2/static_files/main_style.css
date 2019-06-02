@@ -57,12 +57,12 @@
 /*Used for section titles on the main page(ex. Lecture Materials) */
 .main_header{
     font-weight:bold;
-    color:#95989A;
+    color:#306bac;
 }
 
 /* Used to display a list of content (ex. Lecture Material/Comments/Etc ) */
 .content_card{
-    color:#95989A;
+    color:#306bac;
     box-shadow: 4px 4px 4px grey;
 }
 

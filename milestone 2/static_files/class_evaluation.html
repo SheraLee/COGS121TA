@@ -174,7 +174,7 @@ $(document).ready(() => {
 
   
    $('#allUsersButton').click( ()=> {
-    database.ref("students/").once('value', (snapshot) => {
+    database.ref("students/").on('value', (snapshot) => {
       $('#gradeDiv').html('<h3>Students</h3>'+ "<table id='data' class='table table-responsive table-striped'><tr> <th>Student</th> <th>Grade</th> <th>Attendance</th></tr></table>")
       snapshot.forEach(function(data){
         
@@ -430,41 +430,6 @@ database.ref("side_comments").on("value", function(snapshot) {
 
 
         <div class="tab-content">
-        
-      <!--
-          <div id="class_stats" class="tab-pane active">
-              <div class="row"  >
-          
-                  <div class="col-md-6">
-                    Course: <input placeholder="Ex.COGS121" id="course_box" type="text" size="20"/>
-                    <button id="prof_data">Get Course Data</button>
-                            
-                  </div>
-              </div>  
-              <div class="row" style="margin-top:20px">
-
-                  <div class="card content_card col-md-6 stat_cards">
-                      <div id="result"class="card-body">
-                       
-                      </div>
-                  </div> 
-
-                  <div class="card content_card col-md-6 stat_cards">
-                      <h3>Your Class Data</h3>
-                      <h5 style="color:blue">Current Class: COGS 121</h5>
-                      <h5 style="color:green">AVG Hours Spent: 10.5 Hrs</h5>
-                      <h5 style="color:orange">Current Class GPA: 3.0</h5>
-                      <h5>Common Phrases: Easy Going, Helpful, Kind </h5>
-
-                      <h5>Misc Data:</h5>
-            
-                      <div id="piechart"></div>
-                  </div> 
-          
-      
-                </div>     
-          </div>
-        -->
 
     
       <div id="class_stats" class="tab-pane active">
@@ -534,6 +499,7 @@ database.ref("side_comments").on("value", function(snapshot) {
 
           <div class="card content_card">
               <div class="card-body text-center">
+                <h3>Raw Cape Data</h3>
                 Course: <input placeholder="Ex.COGS121" id="course_box" type="text" size="20"/>
                 <button id="prof_data">Get Course Data</button>
                 
@@ -541,9 +507,6 @@ database.ref("side_comments").on("value", function(snapshot) {
               </div>
             </div>
 
-
-
-        
       </div>
 
 

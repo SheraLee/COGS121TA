@@ -1,8 +1,10 @@
 # Final 
 ## Name and contributions:
-Vincent: 
+Vincent:
+
 Yan Yi:
-Xirui Li:
+
+Xirui Li: The class material page and its related firebase. Dispaly the current unsolved questions and solved questions for the correspondong lecture slides. The function of solve and unsolve a question.   
 
 
 ## source code files in your GitHub project repository that your team members wrote, 
@@ -13,9 +15,10 @@ This will help your TA find your code to grade (see next section).
 
 ### HTML
 
-#### class_evaluation.html
+#### class_evaluation.html 
 
-#### class_material_open.html
+#### class_material_open.html 
+Display the slides and questions in the firebase 
 
 #### class_material.html
 

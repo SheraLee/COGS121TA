@@ -2,7 +2,7 @@
 ## Name and contributions:
 Vincent: Dealt with stats page and its related firebase. Also worked on the misc pages(landing, search,class_page) and the UI theme of the site.
 
-Yan Yi:Complete the Edit session, detial session and the active session, which help users to store questions in firebase, pull out question from firsbase, and other detials in these session,like functions, UI.
+Yanyi Wang:Complete the Edit session, detial session and the active session, which help users to store questions in firebase, pull out question from firsbase, and other detials in these session,like functions, UI.
 
 Xirui Li: The class material page and its related firebase. Dispaly the current unsolved questions and solved questions for the correspondong lecture slides. The function of solve and unsolve a question.   
 

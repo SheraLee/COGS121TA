@@ -1,6 +1,6 @@
 # Final 
 ## Name and contributions:
-Vincent:
+Vincent: Dealt with stats page and its related firebase. Also worked on the misc pages(landing, search,class_page) and the UI theme of the site.
 
 Yan Yi:
 
@@ -16,39 +16,53 @@ This will help your TA find your code to grade (see next section).
 ### HTML
 
 #### class_evaluation.html 
+Shows off class statistics from both cape and user side
 
 #### class_material_open.html 
 Display the slides and questions in the firebase 
 
 #### class_material.html
-This pages list all the lecture material , by clicking we can opne the material.
+This pages list all the lecture material, by clicking we can open the material.
 
 #### class_page.html
+The starting page the user will see when the select a class. Gives them the option to choose if they want to : Edit session, Activate Session, Check class stats, or see class material
 
 #### details.html
+Allows the user to see class participation and download it as a csv
 
 #### edit.html
+Allows user to create question and and save them to the database
 
 #### landing.html
+The first page introduced to the user when they visit the site for the first time. It also gives them a brief overview of what the site is capable of
 
 #### my_classes.html
+Displays a list of classes available to the user
 
 #### search_results.html
+Displays a list of classes found that was inputted by the user
 
 #### session_active.html
+A quiz like session started by the user and students can particpate in it
 
 ### CSS
 
 #### main_styles.css
-
+CSS this is used for elements that show up more than once
 
 ### JS
 
 #### nav_bar.js
+Used to adjust content and slide animation for the side navbar
 
-### server.js
+#### server.js
+Basic ajax calls as well as starting up the server
 
 #### class_eval.js
+Used to help visualize data from the firebase. Uses google API to show off charts
+
+#### details.js
+Used to help export the student table into a csv file
 
 
 

@@ -21,6 +21,7 @@ This will help your TA find your code to grade (see next section).
 Display the slides and questions in the firebase 
 
 #### class_material.html
+This pages list all the lecture material , by clicking we can opne the material.
 
 #### class_page.html
 

@@ -29,96 +29,7 @@
   firebase.initializeApp(firebaseConfig);
 </script>
 
-  <style>
-.detailBox {
-    width:400px;
-    border:1px solid #bbb;
-    margin:20px;
-}
-.titleBox {
-    background-color:#fdfdfd;
-    padding:10px;
-}
-.titleBox label{
-  color:#444;
-  margin:0;
-  display:inline-block;
-}
 
-.commentBox label{
-  color:#444;
-  margin:0;
-  display:inline-block;
-}
-
-.commentBox {
-    padding:10px;
-    border-top:1px dotted #bbb;
-}
-.commentBox .form-group:first-child, .actionBox .form-group:first-child {
-    width:80%;
-}
-.commentBox .form-group:nth-child(2), .actionBox .form-group:nth-child(2) {
-    width:18%;
-}
-.actionBox .form-group * {
-    width:100%;
-}
-.taskDescription {
-    margin-top:10px 0;
-}
-.commentList {
-    padding:0;
-    list-style:none;
-    max-height:200px;
-    overflow:auto;
-}
-.commentList li {
-    margin:0;
-    margin-top:10px;
-}
-.commentList li > div {
-    display:table-cell;
-}
-.commenterImage {
-    width:30px;
-    margin-right:5px;
-    height:100%;
-    float:left;
-}
-.commenterImage img {
-    width:100%;
-    border-radius:50%;
-}
-.commentText p {
-    margin:0;
-}
-.sub-text {
-    color:#aaa;
-    font-family:verdana;
-    font-size:11px;
-}
-.actionBox {
-    border-top:1px dotted #bbb;
-    padding:10px;
-}
-
-.comment-wrapper .panel-body {
-    max-height:650px;
-    overflow:auto;
-}
-
-.comment-wrapper .media-list .media img {
-    width:64px;
-    height:64px;
-    border:2px solid #e5e7e8;
-}
-
-.comment-wrapper .media-list .media {
-    border-bottom:1px dashed #efefef;
-    margin-bottom:25px;
-}
-</style> 
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -135,7 +46,7 @@
 
   </head>
 
-
+<!-- this is the side navigation bar-->
   <body style="background-color:#fff;">
   <div id="mySidenav" class="sidenav open">
         <div style="display:block">
@@ -148,7 +59,8 @@
         <a href="class_evaluation.html">Class Statistics</a>
 
         <br>
-        <a href="search_results.html">Find Classes</a>
+        <br>
+        <a href="search_results.html" >Find Classes</a>
         <a href="my_classes.html">My Classes</a>
       </div>
 
@@ -173,7 +85,7 @@
 
 
 
-
+<!-- this card showing the question and answers -->
 <div class="container" style="margin-left:20px">
   <h1 class="main_header">Active Session</h1>
 <input id="Question_number" placeholder="Question_1" type="text" size="20" style="margin-top:20px" />
@@ -195,14 +107,13 @@
     <li class="list-group-item"id = 'E'>E.</li>
   </ul>
   <div class="card content_card card-body">
-    <!--<button id="next" class="btn button_style"  style="margin-left: 400px">Next</button>-->
+
   </div>
 </div>
 
 
 
-
-
+<!-- this part is displaying the question participation statistics-->
 
     </div>
     <div class="col">
@@ -215,111 +126,7 @@
   <div class="card-body">
     <h5 class="card-title">Statisics</h5>
     <p class="card-text">There are 44% people got the right anwser</p>
-     <!--   <div class="col col-md-4">
-      <div class="detailBox">
-        <div class="titleBox">
-       <label>Unsolved Questions</label>
-        </div>
 
-        
-
-
-        <div class="actionBox">
-            <ul class="commentList">
-                <div id = "Questions" ></div>
-                <li>
-                    <div class="commenterImage">
-                      <img src="http://placekitten.com/50/50" />
-                    </div>
-                    <div class="commentText">
-                        <p class="">Hello this is a test comment.</p> <span class="date sub-text">on March 5th, 2014</span>
-                        <button type="button"  id="solved"  class="btn btn-info btn-xs">solved <span class="glyphicon glyphicon-remove"></span>
-
-                    </div>
-                </li>
-                <li>
-                    <div class="commenterImage">
-                      <img src="http://placekitten.com/45/45" />
-                    </div>
-                    <div class="commentText">
-                        <p class="">Hello this is a test comment and this comment is particularly very long and it goes on and on and on.</p> <span class="date sub-text">on March 5th, 2014</span>
-                        <button type="button"  id="unsolved"  class="btn btn-info btn-xs">solved <span class="glyphicon glyphicon-remove"></span>
-                    </div>
-                </li>
-                <li>
-                    <div class="commenterImage">
-                      <img src="http://placekitten.com/40/40" />
-                    </div>
-                    <div class="commentText">
-                        <p class="">Hello this is a test comment.</p> <span class="date sub-text">on March 5th, 2014</span>
-                        <button type="button"  id="unsolved"  class="btn btn-info btn-xs">solved <span class="glyphicon glyphicon-remove"></span>
-
-                    </div>
-                </li>
-            </ul>
-            <form class="form-inline" role="form">
-                <div class="form-group">
-                    <input id="comment" class="form-control" type="text" placeholder="Your comments" />
-                </div>
-                <div class="form-group">
-                    <button id="post" type="button" class="btn">Add</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-
--->
-<!--
-
-      <div class="detailBox">
-        <div class="titleBox">
-          <label>Solved Questions</label>
-        </div>
-        <div class="actionBox">
-            <ul class="commentList">
-                <div id = "SolvedQuestion" ></div>
-                <li>
-                    <div class="commenterImage">
-                      <img src="http://placekitten.com/50/50" />
-                    </div>
-                    <div class="commentText">
-                        <p class="">Hello this is a test comment.</p> <span class="date sub-text">on March 5th, 2014</span>
-                        <button type="button"  id="solved"  class="btn btn-info btn-xs">unsolved <span class="glyphicon glyphicon-remove"></span>
-
-                    </div>
-                </li>
-                <li>
-                    <div class="commenterImage">
-                      <img src="http://placekitten.com/45/45" />
-                    </div>
-                    <div class="commentText">
-                        <p class=""> Hello this is a test comment and this comment is particularly very long and it goes on and on and on.</p> <span class="date sub-text">on March 5th, 2014</span>
-                        <button type="button"  id="solved"  class="btn btn-info btn-xs">unsolved <span class="glyphicon glyphicon-remove"></span>
-                    </div>
-                </li>
-                <li>
-                    <div class="commenterImage">
-                      <img src="http://placekitten.com/40/40" />
-                    </div>
-                    <div class="commentText">
-                        <p class="">Hello this is a test comment.</p> <span class="date sub-text">on March 5th, 2014</span>
-                        <button type="button"  id="solved"  class="btn btn-info btn-xs">unsolved <span class="glyphicon glyphicon-remove"></span>
-
-                    </div>
-                </li>
-            </ul>
-            <form class="form-inline" role="form">
-                <div class="form-group">
-                    <input id="comment" class="form-control" type="text" placeholder="Your comments" />
-                </div>
-                <div class="form-group">
-                    <button id="post" type="button" class="btn">Add</button>
-                </div>
-            </form>
-        </div>
-</div>
-</div> -->
 
     <a href="details.html" class="btn btn-primary button_style">Details</a>
   </div>

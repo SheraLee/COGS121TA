@@ -1,3 +1,5 @@
+    /* Main function of this file is to help load the question from the firebase. */
+    
     $(document).ready(() => {
     const database = firebase.database()
 

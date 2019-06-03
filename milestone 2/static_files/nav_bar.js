@@ -1,3 +1,8 @@
+/* nav_bar.js is used to help animate the close and slide animation of the sidenav bar. It achieves
+a somewhat responsive design by pushing all the content to the right when sliding out, and the opposite
+when it closes. 
+*/
+
 $( document ).ready(function() {
   openNav();
 });

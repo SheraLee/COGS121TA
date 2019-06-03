@@ -1,3 +1,9 @@
+/* class_eval.js stores all the functions used to visualize the data found in class_evaluation.html. 
+A majority of these functions rely on calls from firebase and google'sAPI in order to retrieve and produce the graphs. 
+We also include the student list functions in here and are used to display the current student data to the user. 
+*/
+
+
 $(document).ready(() => {
     const database = firebase.database();
     

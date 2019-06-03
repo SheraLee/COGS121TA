@@ -1,3 +1,6 @@
+/* Credits to Mike Dearman, who helped a user on stackoverflow created this converter : https://jsfiddle.net/mdearman/d1zpndcu/ 
+    Used to convert the table found in details.html to a downloadbale csv file.
+*/
 function exportTableToCSV(html, filename) {
     var csv = [];
     var rows = document.querySelectorAll("table tr");

@@ -1,3 +1,7 @@
+    /* The functions found in edit.js is used to help create new questions for sessions. It gives
+    the user the ability to remove all questions as well. It basic functions include the save question
+     and uploading an image to go along with said question.*/
+    
     $(document).ready(() => {
     const database = firebase.database()
 

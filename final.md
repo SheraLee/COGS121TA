@@ -49,7 +49,7 @@ This will help your TA find your code to grade (see next section).
 
 
 ## Google Slide 
-
+https://docs.google.com/presentation/d/1Ycm9cOOngv62187PbDFMKOelWsuVbAYbePE13UnqWno/edit?usp=sharing
 
 ## Video
 https://drive.google.com/a/ucsd.edu/file/d/1sNNQGZRsv2KXMHaB7jTKHiCmAynQMjhM/view?usp=sharing

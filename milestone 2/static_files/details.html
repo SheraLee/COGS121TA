@@ -1,3 +1,7 @@
+
+<!--This file is providing more details of participation question page.
+ It also allow users to export the participation table to csv-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,10 +15,11 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="main_style.css">
   <script src="nav_bar.js"></script>
+  <script src="details.js"></script>
 </head>
 
-
-  <body style="background-color:#fff;">
+<!-- add the navagation bar-->
+<body style="background-color:#fff;">
   <div id="mySidenav" class="sidenav open">
         <div style="display:block">
           <h1><a href="landing.html">CourseAid</a></h1>
@@ -30,10 +35,6 @@
         <a href="my_classes.html">My Classes</a>
       </div>
 
-
-
-
-      
   <div id="main">
 
       <div class="top_links">
@@ -51,7 +52,7 @@
 
  <h1 class="main_header">Detail</h1>
       
-
+<!--Create a fake in class participation table  -->
 <div class="container" style="margin:50px">
 <table class="table table-bordered" >
   <thead>
@@ -89,23 +90,17 @@
 </table>
 
 
+
 <div class="row"  style="margin:10px">
 
-<div class="dropdown show">
-  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Export file
-  </a>
-
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-    <a class="dropdown-item" href="#">Export as csv.</a>
-    <a class="dropdown-item" href="#">Export as excel.</a>
-    <a class="dropdown-item" href="#">Export as pdf.</a>
-  </div>
-</div>
-
+  <!-- create a button for exporting the csv file -->
+  <button onclick="exportTableToCSV(null,'test.csv')">Export as csv file </button>
 
 </div>
 
+ 
+
+ <!-- Create the fake comment from students regarding the in class questions -->
 <h2>In Class Questions</h2>
 
 <div class="list-group">
